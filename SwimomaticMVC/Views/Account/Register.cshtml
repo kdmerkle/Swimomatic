@@ -1,0 +1,82 @@
+﻿@using SwimomaticMVC.Models;
+@using Microsoft.Web.Helpers;
+@model SwimomaticMVC.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+<h2>
+    Register for a new Swimomatic account</h2>
+<p>
+    Use the form below to create a new account.
+</p>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.")
+    @Model.SuccessMessage
+    <div>
+        <fieldset>
+            <div>
+                @Html.LabelFor(m => m.Email)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.Email, new { @class = "input-box long" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.FirstName)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "input-box medium" })
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.LastName)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.LastName, new { @class = "input-box medium" })
+                @Html.ValidationMessageFor(m => m.LastName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.City)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.City, new { @class = "input-box medium" })
+                @Html.ValidationMessageFor(m => m.City)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.RegionID)
+            </div>
+            <div>
+                @Html.DropDownListFor(m => m.RegionID, Model.Regions, new { @Value = Model.RegionID, @class = "input-dropdown" })
+                @Html.ValidationMessageFor(m => m.RegionID)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Password)
+            </div>
+            <div>
+                @Html.PasswordFor(m => m.Password, new { @class = "input-box medium" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.ConfirmPassword)
+            </div>
+            <div>
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input-box medium" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+            </div>
+            <p>
+                Please enter the words displayed in the image below. If they are difficult to read,
+                click the refresh button and a new image will load.<br />
+                This security feature protects your data. Thanks!
+            </p>
+            <div>
+                @ReCaptcha.GetHtml(theme: "blue")
+            </div>
+            <p>
+                @Html.ValidationMessageFor(m => m.Captcha)
+            </p>
+            <input type="submit" class="button" value="Register" />
+            <input id="btnCancel" type="button" class="button" value="Cancel" onclick="javascript:window.location = 'account/logon';" />
+        </fieldset>
+    </div>
+}

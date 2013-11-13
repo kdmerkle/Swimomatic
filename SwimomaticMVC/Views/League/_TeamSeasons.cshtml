@@ -1,0 +1,34 @@
+﻿@using SwimomaticMVC.Models;
+@model List<ViewTeam>
+<div>
+    <h5>
+        Registered Teams</h5>
+    <table class="data-table">
+        <tr>
+            <th>
+                Team Name (Abbrev)
+            </th>
+            <th>
+                Home Location
+            </th>
+            <th>
+                Pool
+            </th>
+        </tr>
+        @foreach (ViewTeam vt in Model)
+        {
+            <tr valign="top">
+                <td>
+                    @(vt.TeamNameAbbrev)
+                </td>
+                <td>
+                    @(vt.LocationName)<br />@(vt.Address)<br />@(vt.CityStateZip) <a href="@("http://maps.google.com/maps?f=q&hl=en&q=" + vt.Address +"," + vt.CityStateZip)" target="_blank">Map</a>
+                </td>
+                <td>
+                    @(vt.HomePoolConfig.LaneCount)
+                    Lanes,&nbsp;@(vt.HomePoolConfig.LengthDescription)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,59 @@
+﻿@using SwimomaticMVC.Models;
+@{ List<ViewPoolConfig> vpcs = (List<ViewPoolConfig>)ViewBag.PoolConfigs;}
+<table width="75%" class="data-table">
+    <tr>
+        <th>
+            &nbsp;
+        </th>
+        <th>
+            Location
+        </th>
+        <th>
+            Pool
+        </th>
+        <th>
+            Setup
+        </th>
+        <th>
+            Length
+        </th>
+        <th>
+            Lanes
+        </th>
+        <th>
+            &nbsp;
+        </th>
+    </tr>
+    @foreach (ViewPoolConfig vpc in vpcs)
+    {
+        <tr>
+            <td style="text-align: center;">
+                <a onclick="javascript:ShowPoolConfig(@(vpc.PoolID) ,@(vpc.PoolConfigID));"
+                href="javascript:void(0);">Edit Setup</a>
+            </td>
+            <td>
+                @(vpc.LocationName)
+            </td>
+            <td>
+                @(vpc.PoolDescription)
+            </td>
+            <td>
+                @(vpc.Description)
+            </td>
+            <td>
+                @(vpc.LengthDescription)
+            </td>
+            <td>
+                @(vpc.LaneCount.ToString())
+            </td>
+            <td>
+                <a id="A1" href="javascript:void(0);" onclick="javascript:ShowPoolConfig(@(vpc.PoolID) ,0);">
+                    Add Setup to this Pool</a>
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    <a id="A2" href="javascript:void(0);" onclick="javascript:ShowPool(0,@((int)ViewBag.LocationID));">
+        Create a new Pool</a>
+</div>

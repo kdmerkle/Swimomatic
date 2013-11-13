@@ -1,0 +1,66 @@
+﻿@using SwimomaticMVC.Models;
+@model List<ViewPoolConfig>
+@{
+    int locationID = 0;
+    int HomePoolConfigID = 0;
+    string checkedBox = "";
+}
+<h3>
+    Pools</h3>
+<p>
+    The pools listed in the table below were created by you.</p>
+<table class="data-table">
+    <tr>
+        <th>
+            Select
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Pool
+        </th>
+        <th>
+            &nbsp;
+        </th>
+    </tr>
+    @foreach (ViewPoolConfig vpc in Model)
+    {
+
+        if (vpc.IsHomePoolConfig)
+        {
+            checkedBox = "checked=checked";
+            HomePoolConfigID = vpc.PoolConfigID;
+        }
+        else
+        {
+            checkedBox = "";
+        }
+        locationID = vpc.LocationID;
+        <tr>
+            <td>
+                <input type="checkbox" class="chkHomePoolConfigID" name="HomePoolConfigID" id="chkHomePoolConfigID@(vpc.PoolConfigID)" value="@(vpc.PoolConfigID)" @(checkedBox) />
+            </td>
+            <td>
+                @(vpc.LocationName)
+            </td>
+            <td>
+                @(vpc.FullAddress)
+            </td>
+            <td>
+                @(vpc.PoolDescription)
+            </td>
+            <td>
+                <a onclick="javascript:EditPoolConfig(@(vpc.PoolConfigID));" href="javascript:void(0);">
+                    Modify this Pool</a>
+            </td>
+        </tr>    
+    }
+</table>
+<input type="hidden" name="HomePoolConfigID" id="HomePoolConfigID" value="@HomePoolConfigID" />
+<ul class="bodyMenu">
+    <li><a href="javascript:void(0);" id="A1" onclick="javascript:AddPool(@locationID);">
+        Add a new Pool</a></li></ul>

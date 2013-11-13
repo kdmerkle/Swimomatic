@@ -1,0 +1,114 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewTeams 
+@{
+    var vlAdmin = Model.ViewTeamList.Where<ViewTeam>(vt => vt.IsAdmin);
+    bool hasAdminLeagues = vlAdmin.Count() > 0;
+
+    var vlMember = Model.ViewTeamList.Where<ViewTeam>(vt => !vt.IsAdmin);
+    bool hasMemberTeams = vlMember.Count() > 0;          
+}
+<fieldset>
+    <h2>
+        Teams</h2>
+    @if (hasMemberTeams)
+    {           
+        <h5>
+            Teams I'm a member of</h5>
+        <table width="100%" class="data-table">
+            <tr>
+                <th>
+                    Team Name
+                </th>
+                <th>
+                    Abbrev
+                </th>
+                <th>
+                    Home Location
+                </th>
+                <th>
+                    Seasons
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+            @foreach (ViewTeam vt in Model.ViewTeamList)
+            {
+                if (!vt.IsAdmin)
+                {                
+                <tr valign="top">
+                    <td>
+                        @(vt.TeamName)
+                    </td>
+                    <td>
+                        @(vt.Abbrev)
+                    </td>
+                    <td>
+                        @(vt.LocationName)<br />@(vt.Address)<br />@(vt.CityStateZip)
+                        <a href="@("http://maps.google.com/maps?f=q&hl=en&q=" + vt.Address + "," + vt.CityStateZip)" target="_blank">
+                            Map</a>
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" class="ShowTeamSeasons"  id="@vt.TeamID">View Seasons</a>
+                    </td>
+                </tr>
+                }
+            }
+        </table>
+    }
+    @if (hasAdminLeagues)
+    {
+        <h5>
+            Teams I manage</h5>
+        <table width="100%" class="data-table">
+            <tr>
+                <th>
+                    &nbsp;
+                </th>
+                <th>
+                    Team Name
+                </th>
+                <th>
+                    Abbrev
+                </th>
+                <th>
+                    Home Location
+                </th>
+                <th>
+                    Seasons
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+            @foreach (ViewTeam vt in Model.ViewTeamList)
+            {
+                if (vt.IsAdmin)
+                {                   
+                <tr valign="top">
+                    <td>
+                        <a class="ShowTeam" id="@vt.UserTeamID" href="javascript:void(0);">Edit Details</a>
+                    </td>
+                    <td>
+                        @(vt.TeamName)
+                    </td>
+                    <td>
+                        @(vt.Abbrev)
+                    </td>
+                    <td>
+                        @(vt.LocationName)<br />@(vt.Address)<br />@(vt.CityStateZip)
+                        <a href="@("http://maps.google.com/maps?f=q&hl=en&q=" + vt.Address + "," + vt.CityStateZip)" target="_blank">
+                            Map</a>
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" class="ShowTeamSeasons"  id="@vt.TeamID">Edit Seasons</a>
+                    </td>
+                    <td>
+                        <a class="ShowLeagueSearch" id="@vt.UserTeamID" href="javascript:void(0);">Join a League</a>
+                    </td>
+                </tr>
+                }
+            }
+        </table>
+    }
+</fieldset>

@@ -1,0 +1,30 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewTeams
+<h5>
+    Select the Teams participating in this Swim Meet.</h5>
+<table class="data-table">
+    <tr>
+        <th>
+            Select
+        </th>
+        <th>
+            Team
+        </th>
+    </tr>
+    @foreach (ViewTeam vt in Model.ViewTeamList)
+    {
+        <tr>
+            <td style="text-align: center;">
+                <input type="checkbox" id="chkTeamSeason@(vt.TeamSeasonID)" name="chkTeamSeason@(vt.TeamSeasonID)" />
+            </td>
+            <td class="teamName">
+                @(vt.TeamName + " (" + vt.Abbrev + ")")
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    <input type="button" class="button" id="btnTeamBack" onclick="javascript:ShowHide('leagues','teams');"
+        value="<< Back" />
+    <input type="button" class="button" id="btnTeamNext" value="Next >>" />
+</div>

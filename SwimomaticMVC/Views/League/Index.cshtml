@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Leagues";
+}
+<div id="Leagues">
+    @Html.Action("Leagues","League")
+</div>
+<div id="League">
+</div>
+<div id="Seasons">
+</div>
+<div id="Season">
+</div>
+<div id="Teams">
+    <fieldset>
+        <div id="TeamLeagueRequests">
+        </div>
+        <div id="TeamSeasons">
+        </div>
+    </fieldset>
+</div>
+@section script{
+    <script src="@Url.Content("~/Scripts/Views/League.js")" type="text/javascript"></script>
+}
+@section SideNav{
+    <ul>
+        <li class="first arrow"><a href="javascript:void(0);" id="lnkAddLeague" onclick="javascript:ShowLeague(0)">
+            Create a new League</a> </li>
+    </ul>
+}

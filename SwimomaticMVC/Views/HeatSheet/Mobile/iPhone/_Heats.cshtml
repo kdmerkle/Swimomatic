@@ -1,0 +1,56 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewHeats
+@{    
+    Layout = null;
+}
+@foreach (ViewHeat vh in Model.ViewHeatList)
+{
+    <table class="data-table">
+        <caption>
+            Heat @(vh.HeatNumber)
+        </caption>
+        <tr>
+            <th>
+                Lane
+            </th>
+            @if (vh.IsRelay)
+            {
+                <th>
+                    Leg
+                </th>
+            }
+            <th>
+                Swimmer
+            </th>
+            <th>
+                Team
+            </th>
+            <th>
+                Seed
+            </th>
+        </tr>
+        @foreach (ViewHeatSwimmer swmr in vh.ViewHeatSwimmers)
+        {
+            <tr>
+                <td>
+                    @(swmr.LaneNumber)
+                </td>
+                @if (vh.IsRelay)
+                {
+                    <td>
+                        @(swmr.Leg)
+                    </td>
+                }
+                <td>
+                    @(swmr.LastFirstName)
+                </td>
+                <td>
+                    @(swmr.TeamNameAbbrev)
+                </td>
+                <td>
+                    @(swmr.SeedTime.ToString("#.00"))
+                </td>
+            </tr>
+        }
+    </table>
+}

@@ -1,0 +1,49 @@
+﻿@using SwimomaticMVC.Models;
+@{
+    string startDate = "";
+    string endDate = "";
+}
+@model ViewSeasons
+<h5>
+    Select the Season in which this Swim Meet will occur.</h5>
+<table class="data-table">
+    <tr>
+        <th>
+            Select
+        </th>
+        <th>
+            Season
+        </th>
+        <th>
+            Start Date
+        </th>
+        <th>
+            End Date
+        </th>
+    </tr>
+    @foreach (ViewSeason vs in Model.ViewSeasonList)
+    {
+        startDate = (vs.StartDate.HasValue && vs.StartDate.Value != DateTime.MinValue) ? vs.StartDate.Value.ToString("MM/dd/yyyy") : "";
+        endDate = (vs.EndDate.HasValue && vs.EndDate.Value != DateTime.MinValue) ? vs.EndDate.Value.ToString("MM/dd/yyyy") : "";
+
+        <tr>
+            <td style="text-align: center;">
+                <input type="checkbox" id="chkSeason@(vs.SeasonID)" name="chkSeason@(vs.SeasonID)" onclick="javascript:GetTeams(@(vs.SeasonID));" />
+            </td>
+            <td class="seasonName">
+                @(vs.Description)
+            </td>
+            <td>
+                @startDate
+            </td>
+            <td>
+                @endDate
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    <input type="button" class="button" id="btnSeasonBack" onclick="javascript:ShowHide('leagues','seasons');"
+        value="<< Back" />
+    <input type="button" class="button" id="btnSeasonNext" value="Next >>" />
+</div>

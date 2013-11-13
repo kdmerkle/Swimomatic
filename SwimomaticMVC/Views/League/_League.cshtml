@@ -1,0 +1,41 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewLeague
+<fieldset>
+    <h5>
+        League Details</h5>
+    <div class="input-form">
+        @using (Ajax.BeginForm("SaveLeague", new AjaxOptions { UpdateTargetId = "League", OnSuccess = "SaveLeagueSuccess" }))
+        {
+            @Html.ValidationSummary()
+            <div>
+                @Html.HiddenFor(m => m.LeagueID)
+                <label>
+                    League Name</label>
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.LeagueName, new { @Value = Model.LeagueName, @class = "input-box medium" })
+                @Html.ValidationMessageFor(m => m.LeagueName)
+            </div>
+            <div>
+                <label>
+                    Description</label>
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.LeagueDescription, new { @Value = Model.LeagueDescription, @class = "input-box long" })
+                @Html.ValidationMessageFor(m => m.LeagueDescription)
+            </div>
+            <div>
+                <label>
+                    State</label>
+            </div>
+            <div>
+                @Html.DropDownListFor(m => m.RegionID, Model.Regions, new { @Value = Model.RegionID, @class = "input-dropdown" })
+                @Html.ValidationMessageFor(m => m.RegionID)
+            </div>
+            <div>
+                <input type="submit" id="btnSave" name="btnSave" value="Save" class="button" />
+                <input type="button" id="btnLeagueCancel" name="btnCancel" value="Cancel" class="button" />
+            </div>
+        }
+    </div>
+</fieldset>

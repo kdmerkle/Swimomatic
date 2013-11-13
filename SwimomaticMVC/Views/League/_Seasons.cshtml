@@ -1,0 +1,63 @@
+﻿@using SwimomaticMVC.Models;
+@{
+    string startDate = "";
+    string endDate = "";
+}
+@model ViewSeasons
+<fieldset>
+    <h5>
+        Seasons</h5>
+    <table width="75%" class="data-table">
+        <tr>
+            <th>
+                &nbsp;
+            </th>
+            <th>
+                Season
+            </th>
+            <th>
+                Start Date
+            </th>
+            <th>
+                End Date
+            </th>
+            <th>
+                &nbsp;
+            </th>
+        </tr>
+        @foreach (ViewSeason vs in Model.ViewSeasonList)
+        {
+            startDate = (vs.StartDate.HasValue && vs.StartDate.Value != DateTime.MinValue) ? vs.StartDate.Value.ToString("MM/dd/yyyy") : "";
+            endDate = (vs.EndDate.HasValue && vs.EndDate.Value != DateTime.MinValue) ? vs.EndDate.Value.ToString("MM/dd/yyyy") : "";
+
+            <tr>
+                <td>
+                    <a href="javascript:void(0);" id="lnkSeason@(vs.SeasonID)" onclick="javascript:ShowSeason(@(vs.LeagueID),@(vs.SeasonID))">
+                        Details</a>
+                </td>
+                <td>
+                    @(vs.LeagueDescription)
+                </td>
+                <td>
+                    @startDate
+                </td>
+                <td>
+                    @endDate
+                </td>
+                <td>
+                    <a href="javascript:void(0);" id="lnkTeamSeason@(vs.SeasonID)" onclick="javascript:ShowTeams(@(vs.SeasonID))">
+                        Teams</a>
+                </td>
+            </tr>
+        }
+        @if (Model.IsAdmin)
+        {           
+            <tr>
+                <td align="left" colspan="5">
+                    <a href="javascript:void(0);" id="lnkAddSeason" onclick="javascript:ShowSeason(@(Model.LeagueID),0)">
+                        Create a new Season</a>
+                </td>
+            </tr>
+        }
+    </table>
+</fieldset>

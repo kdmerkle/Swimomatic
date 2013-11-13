@@ -1,0 +1,77 @@
+﻿@model SwimomaticMVC.Models.AccountEdit
+@{
+    ViewBag.Title = "Update Account";
+}
+<h2>
+    Edit Account</h2>
+<p>
+    Use this page to update your account profile.</p>
+<p>
+    If you wish to update your password, enter a new password and confirm it.  Otherwise, leave the password field blank
+</p>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "There was a problem editing your Account. Please correct the errors and try again.")
+    @Model.SuccessMessage
+    <div>
+        <fieldset>
+            <div>
+                @Html.LabelFor(m => m.UserName)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.UserName, new { @class = "input-box medium", @value = Model.UserName })
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.FirstName)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "input-box medium", @value = Model.FirstName })
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.LastName)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.LastName, new { @class = "input-box medium", @value = Model.LastName })
+                @Html.ValidationMessageFor(m => m.LastName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.City)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.City, new { @class = "input-box medium", @value = Model.City })
+                @Html.ValidationMessageFor(m => m.City)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.RegionID)
+            </div>
+            <div>
+                @Html.DropDownListFor(m => m.RegionID, Model.Regions, new { @value = Model.RegionID, @class = "input-dropdown" })
+                @Html.ValidationMessageFor(m => m.RegionID)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Email)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.Email, new { @class = "input-box long", @value = Model.Email })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Password)
+            </div>
+            <div>
+                @Html.PasswordFor(m => m.Password, new { @class = "input-box medium", @value = Model.Password })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.ConfirmPassword)
+            </div>
+            <div>
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input-box medium", @value = Model.Password })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+            </div>
+            <input type="submit" class="button" value="Update Account" />
+        </fieldset>
+    </div>
+}

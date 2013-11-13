@@ -1,0 +1,92 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewHeatSheetEventResult
+@foreach (ViewHeat vh in Model.ViewHeats.ViewHeatList)
+{
+    <h5>
+        @(vh.Description)</h5>
+    <table width="95%" class="data-table">
+        <caption>
+            Heat&nbsp;@vh.HeatNumber
+        </caption>
+        <tr>
+            <th>
+                Lane
+            </th>
+            @if (vh.IsRelay)
+            {
+                <th>
+                    Leg
+                </th>
+            }
+            <th>
+                Swimmer
+            </th>
+            <th>
+                Team
+            </th>
+            <th>
+                Time
+            </th>
+            @if (vh.IsRelay)
+            {
+                <th>
+                    Split
+                </th>
+            }
+            <th>
+                DQ
+            </th>
+            <th>
+                Place
+            </th>
+            <th>
+                Points
+            </th>
+        </tr>
+        @foreach (ViewHeatSwimmer swmr in vh.ViewHeatSwimmers)
+        {
+            string checkedBox = (swmr.Disqualified) ? "checked=\"checked\"" : " ";
+            string elapsedTime = swmr.ElapsedTimeString;
+            string split =  swmr.SplitString;
+            string place = (swmr.Place > 0) ? swmr.Place.ToString() : " ";
+            string points = (swmr.Points > 0) ? swmr.Points.ToString("#.00") : " ";
+    
+            <tr>
+                <td>
+                    @swmr.LaneNumber
+                </td>
+                @if (vh.IsRelay)
+                {
+                    <td>
+                        @swmr.Leg
+                    </td>
+                }
+                <td>
+                    @(swmr.LastFirstName)
+                </td>
+                <td>
+                    @swmr.TeamNameAbbrev
+                </td>
+                <td>
+                    @elapsedTime
+                </td>
+                @if (vh.IsRelay)
+                {
+                    <td>
+                        @split
+                    </td>
+                }
+                <td style="text-align: center;">
+                    <input type="checkbox" disabled="disabled" @checkedBox />
+                </td>
+                <td>
+                    @place
+                </td>
+                <td>
+                    @points
+                </td>
+            </tr>
+        }
+    </table>
+}
+<div>@Html.ActionLink("Swim Meet Results", "SwimMeetResults", new { @SwimMeetID = Model.SwimMeetID })</div>

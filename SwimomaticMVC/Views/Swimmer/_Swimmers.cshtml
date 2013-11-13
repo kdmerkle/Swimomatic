@@ -1,0 +1,57 @@
+﻿@model List<SwimomaticMVC.Models.ViewSwimmer>
+@using SwimomaticMVC.Models
+@{List<ViewSwimmer> vss = (List<ViewSwimmer>)ViewBag.Swimmers;}
+<fieldset>
+    <h2>
+        Swimmers</h2>
+    <table width="75%" class="data-table">
+        <tr>
+            <th>
+                &nbsp;
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Birth Date
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                &nbsp;
+            </th>
+        </tr>
+        @foreach (ViewSwimmer vs in vss)
+        {
+            <tr>
+                <td>
+                    <a onclick="javascript:ShowSwimmer(@vs.UserSwimmerID);" href="javascript:void(0);">Details</a>
+                </td>
+                <td>
+                    @(vs.LastFirstName)
+                </td>
+                <td>
+                    @(vs.BirthDate.ToShortDateString())
+                </td>
+                <td>
+                    @if (vs.IsMale)
+                    {
+                        @("Male")}
+                    else
+                    {
+                        @("Female")
+                    }
+                </td>
+                <td>
+                    <a onclick="javascript:ShowTeamSearch(@vs.UserSwimmerID);" href="javascript:void(0);">
+                        Join a Team</a>
+                </td>
+            </tr>
+        }
+        <tr>
+            <td align="left" colspan="5">
+            </td>
+        </tr>
+    </table>
+</fieldset>

@@ -1,0 +1,51 @@
+﻿@using SwimomaticMVC.Models
+@model ViewTeams
+@{ViewTeams vts = (ViewTeams)ViewBag.Teams;}
+<fieldset>
+    <h5>
+        Select the Team you would like to join.</h5>
+    <div>
+        <table width="75%" class="data-table">
+            <tr>
+                <th>
+                    Select
+                </th>
+                <th>
+                    Team
+                </th>
+                <th>
+                    Season
+                </th>
+                <th>
+                    Dates
+                </th>
+                <th>
+                    Home Location
+                </th>
+            </tr>
+            @foreach (ViewTeam vt in vts.ViewTeamList)
+            {
+                <tr>
+                    <td style="text-align: center;">
+                        <input type="checkbox" class="chkTeamSeason" id="TeamSeason@(vt.TeamSeasonID)" />
+                    </td>
+                    <td>
+                        @(vt.TeamNameAbbrev)
+                    </td>
+                    <td>
+                        @(vt.SeasonDescription)
+                    </td>
+                    <td>
+                        @(vt.StartDate.ToShortDateString() + " - " + vt.EndDate.ToShortDateString())
+                    </td>
+                    <td>
+                        @(vt.LocationName + " " + vt.City + " " + vt.PostalCode)
+                    </td>
+                </tr>
+            }
+        </table>
+        <div>
+            <input type="button" class="button" id="btnTeamRequest" value="Send Request" onclick="javascript:SaveSwimmerTeamRequest(@(vts.UserSwimmerID));" />
+        </div>
+    </div>
+</fieldset>

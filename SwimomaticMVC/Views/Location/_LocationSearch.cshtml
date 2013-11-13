@@ -1,0 +1,10 @@
+﻿@using SwimomaticMVC.Models
+@model ViewLocationSearch
+<label>
+    State:</label>
+@Html.DropDownList("RegionSearch", Model.Regions, "<Select>", new { @class = "input-dropdown" })
+<label>
+    City:</label>
+@Html.DropDownList("CitySearch", Model.Cities, "<Select>", new { @class = "input-dropdown" })
+<input type="button" id="btnLocationSearch" name="btnLocationSearch" value="Search"
+    class="button" onclick="javascript:GetLocationsBySearch();" />

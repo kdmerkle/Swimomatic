@@ -1,0 +1,130 @@
+@using SwimomaticMVC.Models;
+@model ViewSwimMeetResult
+@{
+    Layout = null;
+    ViewBag.Title = "Swim Meet Results";
+    List<ViewHeatSheetEventResult> vrs = Model.SwimMeetResults;
+    List<ViewHeatSheetEventResult> vts = Model.SwimMeetTotals;
+    int swimMeetID = Model.SwimMeetID;
+    int prevHeatSheetEventID = 0;
+    int scoreCount = vrs.Count;
+    int i = 0;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="description" content="Description of your web page goes here." />
+    <meta name="keywords" content="swimomatic,swim meet,heat sheet,web based,free,online." />
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.ico")" />
+    <link href="@Url.Content("~/Content/jquery-ui-1.8.2.custom.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" media="interactive, braille, emboss, handheld, projection, screen, tty, tv" />
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"
+        type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/json2.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ExControl.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Accordion/Accordion.js")" type="text/javascript"></script>
+</head>
+<body>
+    <div class="header-container">
+        <div>
+            <ul>
+                <li class="first">
+                    @Html.Partial("_LogOnPartial") </li>
+            </ul>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div>
+        <ul>
+            <li class="first"><a href="/">Home</a></li>
+            <li class="first"><a href="/SwimMeet">Swim Meets</a></li>
+        </ul>
+    </div>
+    <div>
+        <h5>
+            Team Totals(Unofficial)</h5>
+        <table class="data-table" style="width: 40%;">
+            <tr>
+                <th>
+                    Team
+                </th>
+                <th>
+                    Score
+                </th>
+            </tr>
+            @foreach (ViewHeatSheetEventResult vt in vts) { 
+                <tr>
+                    <td>@vt.Abbrev
+                    </td>
+                    <td>@vt.Points
+                    </td>
+                </tr>
+         }
+        </table>
+    </div>
+    <div>
+    <h5>
+        Events</h5>
+        <ul class="bodyMenu">
+            <li>@Html.ActionLink("All Results", "SwimMeetResults", new { SwimMeetID = swimMeetID })</li>
+            <li>@Html.ActionLink("My Results", "SwimMeetResultsByUser", new { SwimMeetID = swimMeetID })</li>
+            <li>@Html.ActionLink("Heat Sheets", "Index", "HeatSheet", new { id = swimMeetID }, null)</li>
+        </ul>
+    </div>
+<div id="accordion">
+@foreach (ViewHeatSheetEventResult vr in vrs)
+{
+
+    if (vr.HeatSheetEventID != prevHeatSheetEventID)
+    { 
+        @:<h3><a href="#">@(vr.Description)</a></h3>
+        @:<div>
+        @:<table class="data-table">
+            @:<tr>
+                @:<th style="text-align:center;width:5em;">Place</th>
+                @:<th style="width:5em;">Team</th>
+                @:<th style="width:12em;">Swimmer</th>
+                @:<th style="text-align:right;width:5em;">Time</th>
+                @:<th style="text-align:right;width:5em;">Points</th>
+                @:<th style="text-align:right;width:5em;">DQ</th>
+           @:</tr>
+    } 
+    @:<tr>
+    if (!vr.IsRelay || (vr.IsRelay && vr.Leg == 1))
+    {
+        //only show ET for 1st leg of relay
+        @:<td style="text-align:center;">@vr.Place</td>
+        @:<td>@vr.Abbrev</td>
+    }
+    else
+    { 
+        @:<td>&nbsp;</td>
+        @:<td>&nbsp;</td>
+    }
+    @:<td>@vr.Swimmer</td>
+    if (!vr.IsRelay || (vr.IsRelay && vr.Leg == 1))
+    {
+        @:<td style="text-align:right;">@vr.ElapsedTimeString</td>
+        @:<td style="text-align:right;">@vr.Points</td>
+        @:<td style="text-align:right;">@(vr.Disqualified ? "X" : "")</td>
+    }
+    else
+    { 
+        @:<td>&nbsp;</td>
+        @:<td>&nbsp;</td>
+        @:<td>&nbsp;</td>
+    }
+    @:</tr>
+    if ((i == scoreCount - 1) || (i < scoreCount && vr.HeatSheetEventID != vrs[i + 1].HeatSheetEventID))
+    { 
+        @:</table></div>            
+    }
+    i++;
+    prevHeatSheetEventID = vr.HeatSheetEventID;
+}   
+</div></body>
+</html>

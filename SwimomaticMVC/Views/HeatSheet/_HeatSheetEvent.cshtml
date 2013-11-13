@@ -1,0 +1,26 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewHeatSheetEvent
+<div class="input-form">
+    @Html.ValidationSummary()
+    @using (Ajax.BeginForm("SaveHeatSheetEvent", new AjaxOptions { UpdateTargetId = "EligibleSwimmers", OnSuccess = "SaveHeatSheetEventSuccess" }))
+    {
+        <input type="hidden" id="HeatSheetID" name="HeatSheetID" value="@Model.HeatSheetID" />
+        <label for="AgeClassID">
+            Age Class
+        </label>
+        @Html.DropDownList("AgeClassID", Model.AgeClassList, new { @class = "input-dropdown" })
+        <label for="Distance">
+            Distance
+        </label>
+        @Html.DropDownList("Distance", Model.DistanceList, new { @class = "input-dropdown" })
+        <label for="StrokeID">
+            Stroke
+        </label>
+        @Html.DropDownList("StrokeID", Model.StrokeList, new { @class = "input-dropdown" })
+        <div>
+            <input type="submit" id="btnSave" name="btnSave" value="Save" class="button" />
+            <input type="button" id="btnCancel" name="btnCancel" value="Cancel" onclick="javascript:HideHeatSheetEvent();"
+                class="button" />
+        </div>
+    }
+</div>

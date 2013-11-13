@@ -1,0 +1,53 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewSwimMeet 
+@if (Model != null)
+{
+    <div>
+        <input type="hidden" id="SwimMeetID" name="SwimMeetID" value="@(Model.SwimMeetID)" />
+        <table class="data-table">
+            <tr>
+                <td>
+                    Swim Meet:
+                </td>
+                <td class="tableText">@(Model.Description)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Date:
+                </td>
+                <td class="tableText">
+                    @(String.Format("{0:d}", Model.StartDate.ToLongDateString()))
+                    @if (Model.EndDate > DateTime.MinValue)
+                    {
+                        @("- " + String.Format("{0:d}", Model.EndDate.ToLongDateString()))		 
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    League / Season:
+                </td>
+                <td class="tableText">
+                    @(Model.LeagueName + " / " + Model.SeasonDescription)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Location:
+                </td>
+                <td class="tableText">
+                    @(Model.LocationName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Teams:
+                </td>
+                <td class="tableText">
+                    @(Model.Teams)
+                </td>
+            </tr>
+        </table>
+    </div>
+}

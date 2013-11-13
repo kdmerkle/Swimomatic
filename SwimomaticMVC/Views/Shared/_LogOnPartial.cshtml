@@ -1,0 +1,10 @@
+﻿@if (Request.IsAuthenticated)
+{
+    @Html.ActionLink((string)ViewBag.FirstLastName, "AccountEdit", "Account")
+    @:&nbsp; &nbsp;
+    @Html.ActionLink("Log Off", "LogOff", "Account") 
+}
+else
+{
+    @: @Html.ActionLink("Log On", "LogOn", "Account")
+}

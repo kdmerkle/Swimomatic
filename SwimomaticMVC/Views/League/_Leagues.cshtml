@@ -1,0 +1,89 @@
+﻿@using SwimomaticMVC.Models;
+@model List<ViewLeague>
+@{
+    var vlAdmin = Model.Where<ViewLeague>(vl => vl.IsAdmin);
+    bool hasAdminLeagues = vlAdmin.Count() > 0;
+
+    var vlMember = Model.Where<ViewLeague>(vl => !vl.IsAdmin);
+    bool hasMemberLeagues = vlMember.Count() > 0;          
+}
+<fieldset>
+    <h2>
+        Leagues</h2>
+    @if (hasMemberLeagues)
+    {           
+        <h5>
+            Leagues I'm a member of</h5>
+        <table width="75%" class="data-table">
+            <tr>
+                <th>
+                    League Name
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+            @foreach (ViewLeague vs in Model)
+            {
+                if (!vs.IsAdmin)
+                {                                  
+                <tr>
+                    <td>
+                        @(vs.LeagueName)
+                    </td>
+                    <td>
+                        @(vs.LeagueDescription)
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" onclick="javascript:ShowSeasons(@(vs.LeagueID))">Seasons</a>
+                    </td>
+                </tr>
+                }
+            }
+        </table>
+    }
+    @if (hasAdminLeagues)
+    {
+        <h5>
+            Leagues I manage</h5>
+        <table width="75%" class="data-table">
+            <tr>
+                <th>
+                    &nbsp;
+                </th>
+                <th>
+                    League Name
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+            @foreach (ViewLeague vs in Model)
+            {
+                if (vs.IsAdmin)
+                {                                  
+                <tr>
+                    <td>
+                        <a onclick="javascript:ShowLeague(@(vs.LeagueID));" href="javascript:void(0);">Edit League</a>
+                    </td>
+                    <td>
+                        @(vs.LeagueName)
+                    </td>
+                    <td>
+                        @(vs.LeagueDescription)
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);"  onclick="javascript:ShowSeasons(@(vs.LeagueID))">Seasons</a>
+                    </td>
+                </tr>
+                }
+            }
+        </table>
+    }
+</fieldset>

@@ -1,0 +1,48 @@
+﻿@using SwimomaticMVC.Models;
+@model List<ViewSwimmer>
+@if (Model.Count > 0)
+{    
+    <div>
+        <h5>
+            Swimmer Requests</h5>
+        <table width="75%" class="data-table">
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Birth Date - (Age)
+                </th>
+                <th>
+                    Gender
+                </th>
+                <th>
+                    Approve
+                </th>
+            </tr>
+            @foreach (ViewSwimmer vs in Model)
+            {
+                <tr>
+                    <td>
+                        @(vs.LastFirstName)
+                    </td>
+                    <td>
+                        @(vs.BirthDate.ToShortDateString() + " - " + vs.Age.ToString()))
+                    </td>
+                    <td>
+                        @if (vs.IsMale)
+                        {
+                            @("Male")}
+                        else
+                        {
+                            @("Female")
+                        }
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" class="ApproveRequest" id="@vs.SwimmerTeamRequestID|@vs.TeamSeasonID">Approve</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}

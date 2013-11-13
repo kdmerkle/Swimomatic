@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Pools";
+}
+<h2>
+    Pools</h2>
+<p>
+    Swimomatic uses Pool Setups when seeding Events in a Heat Sheet. The Length is used
+    to adjust Seed Times so that they are equivalent and Lane Count is used to find
+    the center lane, which is the fastest lane.</p>
+<p>
+    Most Pools have only one Setup but others, for example, can be changed from a Long
+    Course to a Short Course. In this case, there would be 2 possible Setups for one
+    pool. This table shows each pool for [the selected location], and each setup for
+    the pool.</p>
+<div id="PoolConfigs">
+    <fieldset>
+        @Html.Partial("PoolConfigs")
+    </fieldset>
+</div>
+<div id="PoolConfig">
+</div>
+<div id="Pool">
+</div>

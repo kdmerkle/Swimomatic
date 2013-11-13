@@ -1,0 +1,14 @@
+﻿@model int
+@{
+    ViewBag.Title = "Event Results";
+}
+<h2>
+    Results</h2>
+<div id="HeatSheetEventResults">
+    @Html.Action("HeatSheetEventResults", new { HeatSheetEventID = Model })
+</div>
+<div id="HeatSheetEventResultView">
+</div>
+@section script{
+    <script src="@Url.Content("~/Scripts/Views/Result.js")" type="text/javascript"></script>
+}

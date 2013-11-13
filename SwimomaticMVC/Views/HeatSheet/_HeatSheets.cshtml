@@ -1,0 +1,48 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewHeatSheets
+<fieldset>
+    <h5>
+        Heat Sheets</h5>
+    <table width="75%" class="data-table">
+        <tr>
+            <th>
+                &nbsp;
+            </th>
+            <th>
+                Pool
+            </th>
+            <th>
+                Length
+            </th>
+            <th>
+                Lanes
+            </th>
+        </tr>
+        @foreach (ViewPoolConfig vpc in Model.ViewPoolConfigs)
+        {
+            <tr>
+                <td>
+                    <a onclick="javascript:ShowHeatSheetEvents(@(vpc.HeatSheetID));" href="javascript:void(0);">Events</a>
+                </td>
+                <td>
+                    @(vpc.PoolDescription)
+                </td>
+                <td>
+                    @(vpc.LengthDescription)
+                </td>
+                <td>
+                    @(vpc.LaneCount)
+                </td>
+            </tr>
+        }
+        @if (Model.IsAdmin)
+        {
+            <tr>
+                <td align="left" colspan="5">
+                    <a href="javascript:void(0);" id="lnkAddHeatSheet" onclick="javascript:AddHeatSheet(@(Model.SwimMeetID))">
+                        Create a new Heat Sheet</a>
+                </td>
+            </tr>            
+        }
+    </table>
+</fieldset>

@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Locations";
+}
+<h2>
+    Location</h2>
+<p>
+    Locations and Pools are shared by Swimomatic users worldwide! It would be a bummer
+    to duplicate an existing one. So before you create a new Location, use the search
+    tool below to see if someone else has already created it.</p>
+<div class="wizard" id="locationSearch">
+    <fieldset>
+        <h5>
+            Search for a location.</h5>
+        @Html.Partial("LocationSearch")
+    </fieldset>
+</div>
+<div id="locationList">
+</div>
+<div id="location">
+</div>
+    
+@section script{
+    <script src="@Url.Content("~/Scripts/Views/Location.js")" type="text/javascript"></script>
+}
+@section SideNav{
+    <ul>
+        <li class="first arrow"><a id="btnShowLocation" href="javascript:void(0);" onclick="javascript:ShowLocation(0);">
+        Create a new Location</a></li>
+    </ul>
+}

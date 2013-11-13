@@ -1,0 +1,45 @@
+﻿@using SwimomaticMVC.Models;
+@{ List<ViewPoolConfig> vpcs = (List<ViewPoolConfig>)ViewBag.PoolConfigs;}
+<fieldset>
+    <h5>
+        Pool Setups</h5>
+    <div>
+        @Html.ActionLink("Add a New Pool Setup", "PoolConfigs", "Location", new { @Id = (int)ViewBag.LocationID }, null)
+    </div>
+    <table width="75%" class="data-table">
+        <tr>
+            <th>
+                &nbsp;
+            </th>
+            <th>
+                Pool
+            </th>
+            <th>
+                Length
+            </th>
+            <th>
+                Lanes
+            </th>
+        </tr>
+        @foreach (ViewPoolConfig vpc in vpcs)
+        {
+            <tr>
+                <td style="text-align: center;">
+                    <input type="checkbox" id="chkPoolConfig@(vpc.PoolConfigID)" />
+                </td>
+                <td>
+                    @(vpc.PoolDescription)
+                </td>
+                <td>
+                    @(vpc.LengthDescription)
+                </td>
+                <td>
+                    @(vpc.LaneCount)
+                </td>
+            </tr>
+        }
+    </table>
+    <div>
+        <input type="button" class="button" id="btnTeamNext" value="Next >>" onclick="javascript:ShowHeatSheetTeams(@(ViewBag.SwimMeetID));" />
+    </div>
+</fieldset>

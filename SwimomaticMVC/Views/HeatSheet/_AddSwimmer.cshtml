@@ -1,0 +1,19 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewAddSwimmer
+<input type="hidden" id="addswimmer_HeatID" name="HeatID" value="@Model.HeatID" />
+<input type="hidden" id="addswimmer_HeatSheetEventID" name="HeatSheetEventID" value="@Model.HeatSheetEventID" />
+<label>
+    Swimmer
+</label>
+@Html.DropDownList("addswimmer_SwimmerTeamSeasonID", Model.HeatSwimmerList, new { @class = "input-dropdown" })
+@if (Model.IsRelay)
+{
+    <label>
+        Lane Number
+    </label>
+    @Html.TextBox("addswimmer_LaneNumber", "", new { @class = "input-box" })
+    <label>
+        Leg
+    </label>
+    @Html.TextBox("addswimmer_Leg", "", new { @class = "input-box" })
+}

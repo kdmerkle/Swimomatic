@@ -1,0 +1,63 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewSwimmers
+@{
+    string age = "";
+}
+<div>
+    <h5>
+        Registered Swimmers</h5>
+    <table class="data-table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                @if (Model.IsAdmin)
+                { 
+                    @:Birth Date - (Age)
+                }
+                else
+                { 
+                    @:Age
+                                }
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                &nbsp;
+            </th>
+        </tr>
+        @foreach (ViewSwimmer vs in Model.ViewSwimmerList)
+        {
+            if (Model.IsAdmin)
+            {
+                age = vs.BirthDate.ToString("MM/dd/yyyy") + " - (" + vs.Age.ToString() + ")";
+            }
+            else
+            {
+                age = vs.Age.ToString();
+            }
+            <tr>
+                <td>
+                    @(vs.LastFirstName)
+                </td>
+                <td align="right">
+                    @age
+                </td>
+                <td>
+                    @if (vs.IsMale)
+                    {
+                        @("Male")}
+                    else
+                    {
+                        @("Female")
+                    }
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+        }
+    </table>
+</div>

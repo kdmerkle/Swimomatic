@@ -1,0 +1,74 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewTeam
+<fieldset>
+    <div class="input-form">
+        <h3>
+            Team Details</h3>
+        @Html.ValidationSummary()
+        @using (Ajax.BeginForm("SaveTeam", new AjaxOptions { UpdateTargetId = "Teams", OnSuccess = "SaveTeamSuccess" }))
+        {
+            <div>
+                @Html.HiddenFor(m => m.TeamID, new { @Value = @Model.TeamID })
+                @Html.LabelFor(m => m.TeamName)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.TeamName, new { @Value = @Model.TeamName, @class = "input-box long" })
+                @Html.ValidationMessageFor(m => m.TeamName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Abbrev)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.Abbrev, new { @Value = @Model.Abbrev, @class = "input-box short" })
+                @Html.ValidationMessageFor(m => m.Abbrev)
+            </div>
+            <div>
+                <label>
+                    Home Pool</label>
+            </div>
+            <div>
+                <input type="hidden" id="hdnHomePoolConfigID" value="@Model.HomePoolConfig.PoolConfigID" />
+                <input type="hidden" id="hdnHomePoolConfigCity" value="@Model.Location.City" />
+                <input type="hidden" id="hdnHomePoolConfigRegionAbbrev" value="@Model.Location.RegionAbbrev" />
+                @if (Model.TeamID == 0)
+                {
+                    <p>
+                        <a id="lnkChangeHomePool" href="javascript:void(0);" alt="">Select Home Pool</a></p>
+                }
+                else
+                { 
+                    <table class="data-table">
+                        <tr>
+                            <td>
+                                Name:
+                            </td>
+                            <td>@Model.HomePoolConfig.LocationName
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Length:
+                            </td>
+                            <td>@Model.HomePoolConfig.LengthDescription
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Lanes:
+                            </td>
+                            <td>@Model.HomePoolConfig.LaneCount
+                            </td>
+                        </tr>
+                    </table>
+                    <p>
+                        <a id="lnkChangeHomePool" href="javascript:void(0);" alt="">Change Home Pool</a></p>
+                }
+            </div>
+            <div>
+                <input type="submit" id="btnSave" name="btnSave" value="Save" class="button" />
+                <input type="button" id="btnCancel" name="btnCancel" value="Cancel" onclick="javascript:$('#Team').hide();"
+                    class="button" />
+            </div>
+        }
+    </div>
+</fieldset>

@@ -1,0 +1,53 @@
+﻿@using SwimomaticMVC.Models;
+@model List<ViewSeason>
+@{
+    string startDate = "";
+    string endDate = "";
+}
+<fieldset>
+    <div>
+        <h5>
+            Seasons</h5>
+        <table width="75%" class="data-table">
+            <tr>
+                <th>
+                    Season
+                </th>
+                <th>
+                    League
+                </th>
+                <th>
+                    Start Date
+                </th>
+                <th>
+                    End Date
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+            @foreach (ViewSeason vs in Model)
+            {
+                startDate = (vs.StartDate.HasValue && vs.StartDate.Value != DateTime.MinValue) ? vs.StartDate.Value.ToString("MM/dd/yyyy") : "";
+                endDate = (vs.EndDate.HasValue && vs.EndDate.Value != DateTime.MinValue) ? vs.EndDate.Value.ToString("MM/dd/yyyy") : "";
+                <tr>
+                    <td>
+                        @(vs.Description)
+                    </td>
+                    <td>
+                        @(vs.LeagueName + " - " + vs.LeagueDescription)
+                    </td>
+                    <td>
+                        @startDate
+                    </td>
+                    <td>
+                        @endDate
+                    </td>
+                    <td>
+                        <a class="ShowRoster" href="javascript:void(0);" id="@vs.TeamSeasonID">Roster</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</fieldset>

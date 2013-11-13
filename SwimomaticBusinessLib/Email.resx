@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConfirmationEmailBody" xml:space="preserve">
+    <value>Thank you for creating an account with Swimomatic.  Please click the following link to complete your registration.  Or, you may copy and paste the link into the address bar of your web browser.  Thank you!  {0}</value>
+  </data>
+  <data name="ConfirmRegistrationURL" xml:space="preserve">
+    <value>http://swimomatic.logicaladvantage.com/Account/ConfirmRegistration/</value>
+  </data>
+  <data name="EmailNoReplyFrom" xml:space="preserve">
+    <value>RegisterNoReply@swimomatic.com</value>
+  </data>
+  <data name="SMTPServer" xml:space="preserve">
+    <value>smtp.gmail.com</value>
+  </data>
+  <data name="RegistrationSuccessMessage" xml:space="preserve">
+    <value>Congratulations and thank you for creating your new Swimomatic account.  An email has been sent to {0} .  You must open this email and click the link included in the email in order to activate your account.</value>
+  </data>
+  <data name="ResetPasswordEmailBody" xml:space="preserve">
+    <value>&lt;p&gt;
+This message was sent automatically from Swimomatic.  Please do not reply to it.&lt;br/&gt;&lt;br/&gt;
+
+A request was made to reset your Swimomatic password using this email address.  If you did not make the request, you may disregard this message.  
+
+Otherwise, read the instructions below then click the link at the bottom to complete the process.&lt;br/&gt;&lt;br/&gt;
+
+You will be directed to the Edit Password page on Swimomatic. Enter the temporary password below in the appropriate box
+and create a new permanent password.  Your new permanent password must satisfy these requirements:
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Password must be between 8 and 30 characters long.&lt;/li&gt;
+&lt;li&gt;Password must contain 1 number.&lt;/li&gt;
+&lt;li&gt;Password must contain 1 capital letter.&lt;/li&gt;
+&lt;li&gt;Password must contain 1 of these special characters:   &lt;strong&gt; ? = . * [ ] ! @ # $ % ^ &amp; * ( ) _ + " : ; ' &gt; &lt; , &lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Hint: A simple phrase is often a good choice: &lt;strong&gt;  ILove2Swim! &lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Your Temporary password is: &lt;strong&gt;  {0} &lt;/strong&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Click this link or copy and paste it into your browser window to continue resetting your password.&lt;br/&gt;&lt;br/&gt;
+&lt;a href="{1}" target="_blank"&gt;{1}&lt;/a&gt;
+&lt;/p&gt;</value>
+  </data>
+  <data name="ResetPasswordURL" xml:space="preserve">
+    <value>http://swimomatic.logicaladvantage.com/Account/ConfirmResetPassword/</value>
+  </data>
+</root>

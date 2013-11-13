@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Swimmers";
+}
+<div id="Swimmers">
+    @Html.Partial("_Swimmers")
+</div>
+<div id="Swimmer">
+</div>
+<div id="TeamSearch">
+</div>
+<div id="SwimmerTeamRequest">
+</div>
+@section script{
+    <script src="@Url.Content("~/Scripts/Views/Swimmer.js")" type="text/javascript"></script>
+}
+@section SideNav{
+    <ul>
+        <li class="first arrow"><a href="javascript:void(0);" id="lnkAddSwimmer" onclick="javascript:ShowSwimmer(0)">
+            Create a new Swimmer</a></li>
+    </ul>
+}

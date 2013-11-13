@@ -1,0 +1,161 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewHeats
+@if (Model.IsAdmin)
+{
+    foreach (ViewHeat vh in Model.ViewHeatList)
+    {
+    <table width="75%" class="data-table">
+        <caption>
+           Heat&nbsp;@(vh.HeatNumber)
+        </caption>
+        <tr>
+            <th>
+                @if ((!vh.IsRelay && (vh.LaneCount > vh.ViewHeatSwimmers.Count)) || (vh.IsRelay && (vh.LaneCount * 4 > vh.ViewHeatSwimmers.Count)))
+                { 
+                    <a class="AddSwimmer" id="@vh.HeatID" title="Add Swimmer" href="javascript:void(0);">(+)</a>
+                }
+            </th>
+            <th>
+                Lane
+            </th>
+            @if (vh.IsRelay)
+            {
+                <th>
+                    &nbsp;
+                </th>
+                <th>
+                    Leg
+                </th>
+            }
+            <th>
+                Swimmer
+            </th>
+            <th>
+                Team
+            </th>
+            <th>
+                Seed
+            </th>
+            <th>
+                <a class="DeleteHeat" id="@(vh.HeatID + "," + vh.HeatSheetEventID)" title="Delete Heat" href="javascript:void(0);">(X)</a>
+            </th>
+        </tr>
+        @foreach (ViewHeatSwimmer swmr in vh.ViewHeatSwimmers)
+        {
+            <tr>
+                <td>
+                    @{string sIncrement = "0";
+                      if (vh.IsRelay) { sIncrement = "1"; }
+                      if (swmr.LaneNumber > 1)
+                      {
+                        <a class="DecrementLane" id="@(vh.HeatID + "," + swmr.HeatSwimmerID + "," + vh.HeatSheetEventID + "," + sIncrement)" href="Javascript:void(0);" >
+                            <img src="@Url.Content("~/Content/images/up.png")" alt="" /></a>
+                      }
+                      else
+                      {
+                        <img src="@Url.Content("~/Content/images/spacer.gif")" alt="" width="13px" />
+                      }
+                      if (swmr.LaneNumber < vh.LaneCount)
+                      { 
+                        <a class="IncrementLane" id="@(vh.HeatID + "," + swmr.HeatSwimmerID + "," + vh.HeatSheetEventID + "," + sIncrement)" href="javascript:void(0);">
+                            <img src="@Url.Content("~/Content/images/down.png")"
+                        alt="" /></a> 
+                      }}
+                </td>
+                <td>
+                    @(swmr.LaneNumber)
+                </td>
+                @if (vh.IsRelay)
+                {
+                    <td>
+                        @if (swmr.Leg > 1)
+                        {
+                            <a class="DecrementLeg" id="@(vh.HeatID + "," + swmr.HeatSwimmerID + "," + vh.HeatSheetEventID)" href="javascript:void(0);">
+                                <img src="@Url.Content("~/Content/images/up.png")" alt="" /></a>
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/Content/images/spacer.gif")" alt="" width="13px" />
+                        }
+                        @if (swmr.Leg < 4)
+                        { 
+                            <a  class="IncrementLeg" id="@(vh.HeatID + "," + swmr.HeatSwimmerID + "," + vh.HeatSheetEventID)" href="javascript:void(0);">
+                                <img src="@Url.Content("~/Content/images/down.png")" alt="" /></a> 
+                        }
+                    </td>
+                    <td>
+                        @(swmr.Leg)
+                    </td>
+                }
+                <td>
+                    @(swmr.LastFirstName)
+                </td>
+                <td>
+                    @(swmr.TeamNameAbbrev)
+                </td>
+                <td>
+                    @(swmr.SeedTimeString)
+                </td>
+                <td>
+                    <a class="RemoveHeatSwimmer" id="@(vh.HeatID + "," + swmr.HeatSwimmerID + "," + vh.HeatSheetEventID)" href="javascript:void(0);">
+                        <img src="@Url.Content("~/Content/images/X.png")" alt="" /></a>
+                </td>
+            </tr>
+        }
+    </table>
+    }
+}
+else
+{
+    foreach (ViewHeat vh in Model.ViewHeatList)
+    {
+    <table width="75%" class="data-table">
+        <caption>
+            Heat @(vh.HeatNumber)
+        </caption>
+        <tr>
+            <th>
+                Lane
+            </th>
+            @if (vh.IsRelay)
+            {
+                <th>
+                    Leg
+                </th>
+            }
+            <th>
+                Swimmer
+            </th>
+            <th>
+                Team
+            </th>
+            <th>
+                Seed
+            </th>
+        </tr>
+        @foreach (ViewHeatSwimmer swmr in vh.ViewHeatSwimmers)
+        {
+            <tr>
+                <td>
+                    @(swmr.LaneNumber)
+                </td>
+                @if (vh.IsRelay)
+                {
+                    <td>
+                        @(swmr.Leg)
+                    </td>
+                }
+                <td>
+                    @(swmr.LastFirstName)
+                </td>
+                <td>
+                    @(swmr.TeamNameAbbrev)
+                </td>
+                <td>
+                    @(swmr.SeedTimeString)
+                </td>
+            </tr>
+        }
+    </table>
+    }
+}

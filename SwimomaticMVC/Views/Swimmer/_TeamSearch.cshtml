@@ -1,0 +1,34 @@
+﻿@using SwimomaticMVC.Models
+@model ViewTeam
+<fieldset>
+    <h5>
+        Search for the Team you would like to join.</h5>
+    <div class="input-form">
+        @Html.ValidationSummary()
+        @using (Ajax.BeginForm("SwimmerTeamRequest", new AjaxOptions { UpdateTargetId = "SwimmerTeamRequest", OnSuccess = "TeamSearchSuccess" }))
+        {
+            @Html.HiddenFor(m => m.UserSwimmerID, new { @Value = ViewBag.UserSwimmerID }) 
+            <div>
+                @Html.LabelFor(m => m.TeamName)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.TeamName)
+                @Html.ValidationMessageFor(m => m.TeamName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.RegionID)
+            </div>
+            <div>
+                @Html.DropDownListFor(m => m.RegionID, (IEnumerable<SelectListItem>)ViewBag.Regions, "<Select>", new { @class = "input-dropdown" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.City)
+            </div>
+            <div>
+                @Html.DropDownListFor(m => m.City, (IEnumerable<SelectListItem>)ViewBag.Cities, "<Select>", new { @class = "input-dropdown" })
+                @Html.ValidationMessageFor(m => m.City)
+            </div>
+            <input type="submit" id="btnTeamSearch" name="btnTeamSearch" value="Search" class="button" />  
+        }
+    </div>
+</fieldset>

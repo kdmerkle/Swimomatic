@@ -1,0 +1,66 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewHeatSheetEvents
+@if (Model.IsAdmin)
+{
+    <div>
+        <a class="AddHeatSheetEvent" id="@Model.HeatSheetID" style="font-size: .8em;" href="javascript:void(0);">
+            Add an Event</a>
+    </div>
+    <div id="HeatSheetEvent">
+    </div>
+    <ul id="sortable" class="no-margin">
+        <input type="hidden" id="sortableheatsheetid" value="@(Model.HeatSheetID)" />
+        @foreach (ViewHeatSheetEvent vhse in Model.ViewHeatSheetEventList)
+        {
+            <li id="@(vhse.HeatSheetEventID)">
+                <table width="75%" style="background: #ffffff;">
+                    <tr>
+                        <td>
+                            <a class="ShowHideHeatSheetEvent" id="@vhse.HeatSheetEventID" href="javascript:void(0);">
+                                <img src="@Url.Content("~/Content/images/plus.png")" alt="" /></a> Event
+                            @(vhse.Sequence.ToString()):
+                            @(vhse.Description)
+                        </td>
+                    </tr>
+                </table>
+                <div class="edithse" id="editHeatSheetEvent@(vhse.HeatSheetEventID)">
+                    <ul class="bodyMenu">
+                        <li><a class="AddHeat" id="@vhse.HeatSheetEventID" href="javascript:void(0);">Add a
+                            Heat</a></li>
+                        <li><a class="ShowEligibleSwimmers" id="@vhse.HeatSheetEventID" href="javascript:void(0);">
+                            Seed Swimmers</a></li>
+                        <li>@Html.ActionLink("Enter Results", "Index", "Result", new { HeatSheetEventID = vhse.HeatSheetEventID }, new { @ID = "lnk" + vhse.HeatSheetEventID.ToString() })</li>
+                        <li><a class="DeleteHeatSheetEvent" id="@(vhse.HeatSheetEventID + "," + vhse.HeatSheetID)" href="javascript:void(0);">
+                            Delete this Event</a></li>
+                        <li><a class="PrintTimerSheet" rel="@(vhse.HeatSheetEventID)" href="javascript:void(0);">
+                            Print Timer Sheet</a></li>
+                    </ul>
+                </div>
+                <div class="heats" id="heats@(vhse.HeatSheetEventID)">
+                    @Html.Partial("_Heats", vhse.Heats)
+                </div>
+            </li>
+        }
+    </ul>
+}
+else
+{ 
+    <script src="@Url.Content("~/Scripts/Accordion/Accordion.js")" type="text/javascript"></script>
+    <div>
+        <ul class="bodyMenu">
+            <li><a id="ShowHeatSheetEvents" class="@Model.HeatSheetID">All Events</a></li>
+            <li><a id="ShowHeatSheetEventsByUser" class="@Model.HeatSheetID">My Events</a></li>
+            <li>@Html.ActionLink("Results", "SwimMeetResults", "Result", new { SwimMeetID = Model.SwimMeetID }, null)</li>
+        </ul>
+    </div>
+    <div id="accordion" style="width: 70%;">
+        @foreach (ViewHeatSheetEvent vhse in Model.ViewHeatSheetEventList)
+        {       
+            <h3>
+                <a href="#">Event @(vhse.Sequence): @(vhse.Description)</a></h3>
+            <div>
+                @Html.Action("Heats", "HeatSheet", new { HeatSheetEventID = vhse.HeatSheetEventID })
+            </div>
+        }
+    </div>
+}

@@ -1,0 +1,62 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewSwimMeets
+<table class="data-table">
+    <tr>
+        <th>
+            &nbsp;
+        </th>
+        <th>
+            SwimMeet
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Location
+        </th>
+        <th>
+            Teams
+        </th>
+        <th>
+            &nbsp;
+        </th>
+        <th>
+            &nbsp;
+        </th>
+    </tr>
+    @foreach (ViewSwimMeet vsm in Model.ViewSwimMeetList)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Heat Sheets", "Index", "HeatSheet", new { id = vsm.SwimMeetID }, null)
+            </td>
+            <td>
+                @(vsm.Description)
+            </td>
+            <td>
+                @(vsm.StartDate.ToString("MM/dd/yyy") + (vsm.EndDate != vsm.StartDate ? " - " + vsm.EndDate.ToString("MM/dd/yyy") : string.Empty))
+            </td>
+            <td>
+                @(vsm.LocationName)
+            </td>
+            <td>
+                @(vsm.Teams)
+            </td>
+            <td>
+                @Html.ActionLink("Results", "SwimMeetResults", "Result", new { SwimMeetID = vsm.SwimMeetID }, null)
+            </td>
+            <td style="text-align: right;">
+                @if (vsm.CanEdit)
+                { 
+                    <a href="javascript:void(0);" id="lnkEditSwimMeet@(vsm.SwimMeetID)" onclick="javascript:EditSwimMeet(@(vsm.SwimMeetID))">
+                        Edit</a>
+                    if (!vsm.HasResults)
+                    { 
+                    <a href="javascript:void(0);" id="lnkDeleteSwimMeet@(vsm.SwimMeetID)" onclick="javascript:ShowConfirmDelete(@(vsm.SwimMeetID))">
+                        Delete</a>
+                    }
+                }
+            </td>
+        </tr>
+    }
+</table>

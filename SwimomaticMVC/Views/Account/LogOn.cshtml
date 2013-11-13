@@ -1,0 +1,42 @@
+﻿@model SwimomaticMVC.Models.LogOnModel
+@{
+    ViewBag.Title = "Log On";
+}
+<h2>
+    Log On</h2>
+<p>
+    Please enter your username and password. @Html.ActionLink("Register", "Register")
+    if you don't have an account.
+</p>
+@Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+@using (Html.BeginForm())
+{
+    <div>
+        <fieldset>
+            <div>
+                @Html.LabelFor(m => m.UserName)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.UserName, new { @class = "input-box long" })
+                @Html.ValidationMessageFor(m => m.UserName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Password)
+            </div>
+            <div>
+                @Html.PasswordFor(m => m.Password, new { @class = "input-box medium" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            <div>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe)
+            </div>
+            <input type="submit" class="button" value="Log On" />
+            <div>
+                <p>
+                    @Html.ActionLink("Forgot Password?", "ResetPassword", "Account")
+                </p>
+            </div>
+        </fieldset>
+    </div>
+}

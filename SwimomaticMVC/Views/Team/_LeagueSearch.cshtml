@@ -1,0 +1,29 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewLeague
+<fieldset>
+    <h5>
+        Search for the League you would like to join.</h5>
+    <div class="input-form">
+        @Html.ValidationSummary()
+        @using (Ajax.BeginForm("TeamLeagueRequest", new AjaxOptions { UpdateTargetId = "TeamLeagueRequest", OnSuccess = "LeagueSearchSuccess" }))
+        {
+                 @Html.HiddenFor(m => m.UserTeamID, new { @Value = Model.UserTeamID })
+            <div>
+                @Html.LabelFor(m => m.LeagueName, "League Name")
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.LeagueName, new { @class = "input-box long" })
+                @Html.ValidationMessageFor(m => m.LeagueName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.RegionID, "State")
+            </div>
+            <div>
+                @Html.DropDownListFor(m => m.RegionID, Model.Regions, "<Select>", new { @class = "input-dropdown" })
+            </div>
+            <input type="submit" id="btnTeamSearch" name="btnTeamSearch" value="Search" class="button" />
+            <input type="button" id="btnCancel" name="btnCancel" value="Cancel" onclick="javascript:$('#LeagueSearch').hide();"
+                class="button" />
+        }
+    </div>
+</fieldset>

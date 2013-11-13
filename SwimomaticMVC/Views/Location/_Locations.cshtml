@@ -1,0 +1,43 @@
+﻿@using SwimomaticMVC.Models;
+@model List<ViewLocation>
+<table class="data-table">
+    <tr>
+        <th>
+            State
+        </th>
+        <th>
+            City
+        </th>
+        <th>
+            Zip Code
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Pools
+        </th>
+    </tr>
+    @foreach (ViewLocation vl in Model)
+      {
+        <tr>
+            <td>
+                @(vl.RegionAbbrev)
+            </td>
+            <td>
+                @(vl.City)
+            </td>
+            <td>
+                @(vl.PostalCode)
+            </td>
+            <td>
+                @(vl.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Pools(" + vl.PoolCount + ")", Url.Content("~/PoolConfigs/" + vl.LocationID))
+            </td>
+        </tr>
+    }
+</table>
+<div>
+</div>

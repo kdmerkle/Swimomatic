@@ -1,0 +1,53 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewLocation
+@{ViewLocation vl = ViewBag.Location;}
+<fieldset>
+    <h5>
+        Location Details</h5>
+    <div class="input-form">
+        @Html.ValidationSummary()
+        @using (Ajax.BeginForm("SaveLocation", new AjaxOptions { UpdateTargetId = "Locations", OnSuccess = "SaveLocationSuccess" }))
+        {
+            <div>
+                @Html.HiddenFor(m => m.LocationID, new { @Value = vl.LocationID })
+                @Html.LabelFor(m => m.Name)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.Name, new { @Value = vl.Name })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Address)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.Address, new { @Value = vl.Address })
+                @Html.ValidationMessageFor(m => m.Address)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.City)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.City, new { @Value = vl.City })
+                @Html.ValidationMessageFor(m => m.City)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.RegionID)
+            </div>
+            <div>
+                @Html.DropDownListFor(m => m.RegionID, vl.Regions, new { @Value = vl.RegionID })
+                @Html.ValidationMessageFor(m => m.RegionID)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.PostalCode)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.PostalCode, new { @Value = vl.PostalCode })
+                @Html.ValidationMessageFor(m => m.PostalCode)
+            </div>
+            <div>
+                <input type="submit" id="btnSave" name="btnSave" value="Save" class="button" />
+                <input type="button" id="btnCancel" name="btnCancel" value="Cancel" class="button" />
+            </div>
+        }
+    </div>
+</fieldset>

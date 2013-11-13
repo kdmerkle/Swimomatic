@@ -1,0 +1,116 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewHeatSheetEventResult
+@{ 
+    ViewHeatSheetEventResult vhser = Model;
+}
+<h5>
+    @(vhser.ViewHeatSheetEvent.Description)</h5>
+@using (Ajax.BeginForm("SaveHeatSheetEventResults", new AjaxOptions { UpdateTargetId = "HeatSheetEventResultView", OnSuccess = "SaveHeatSheetEventResultsSuccess" }))
+{
+    string anchor = "";
+    string checkedBox = string.Empty;
+    string disqualified = string.Empty;
+    string elapsedTime = string.Empty;
+    string split = string.Empty;
+
+    int i = 0;
+    foreach (ViewHeat vh in vhser.ViewHeats.ViewHeatList)
+    {
+    <table width="50%" class="data-table">
+        <caption>
+            Heat&nbsp;@vh.HeatNumber
+        </caption>
+        <tr>
+            <th>
+                Lane
+            </th>
+            @if (vh.IsRelay)
+            {
+                <th>
+                    Leg
+                </th>
+            }
+            <th>
+                Swimmer
+            </th>
+            <th>
+                Team
+            </th>
+            <th>
+                Time
+            </th>
+            @if (vh.IsRelay)
+            {
+                <th>
+                    Split
+                </th>
+            }
+            <th>
+                DQ
+            </th>
+        </tr>
+        @foreach (ViewHeatSwimmer swmr in vh.ViewHeatSwimmers)
+        {
+            checkedBox = (swmr.Disqualified) ? "checked=\"checked\"" : string.Empty;
+            disqualified = (swmr.Disqualified) ? "true" : "false";
+            elapsedTime = swmr.ElapsedTimeString;
+            split = (swmr.Split > 0) ? swmr.SplitString: "";
+        
+            <tr class="resultRow" id="tr@(swmr.HeatSwimmerID)">
+                <td>
+                    <input type="hidden" name="viewHeatSheetEventResults[@(i)].HeatSheetEventID" value="@(vhser.ViewHeatSheetEvent.HeatSheetEventID)" />
+                    <input type="hidden" name="viewHeatSheetEventResults[@(i)].HeatSwimmerID" value="@(swmr.HeatSwimmerID)" />
+                    @swmr.LaneNumber
+                </td>
+                @if (vh.IsRelay)
+                {
+                    <td>
+                        @swmr.Leg
+                    </td>
+                }
+                <td>
+                    @swmr.LastFirstName
+                </td>
+                <td>
+                    @swmr.TeamNameAbbrev
+                </td>
+                <td>
+                    @if (!vh.IsRelay || (vh.IsRelay && swmr.Leg == 1))
+                    {
+                        //only show ET for 1st leg of relay
+                        anchor = swmr.HeatSwimmerID.ToString();
+                        <input type="text" class="short ElapsedTime" id="txtET@(swmr.HeatSwimmerID)" value="@(elapsedTime)" />
+                        <input type="hidden" name="viewHeatSheetEventResults[@(i)].ElapsedTimeString" class="clsET@(anchor) short" value="@(elapsedTime)" />
+                    }
+                    @if (vh.IsRelay && swmr.Leg > 1)
+                    {
+                        <input type="hidden" name="viewHeatSheetEventResults[@(i)].ElapsedTimeString" class="clsET@(anchor) short" value="@(elapsedTime)" />
+                    }
+                </td>
+                @if (vh.IsRelay)
+                {
+                    <td>
+                        <input type="text" name="viewHeatSheetEventResults[@(i)].SplitString" class = "clsSplit short ElapsedTime" id="txtSplit@(swmr.HeatSwimmerID)"  value="@(split)" />
+                    </td>
+                }
+                <td style="text-align: center;">
+                    @if (!vh.IsRelay || (vh.IsRelay && swmr.Leg == 1))
+                    {
+                        <input type="checkbox" id="chkDQ@(swmr.HeatSwimmerID)"  @(checkedBox) />
+                        <input type="hidden" name="viewHeatSheetEventResults[@(i)].Disqualified" class="clsDQ@(anchor) short" value="@(disqualified)" />
+                    }
+                    @if (vh.IsRelay && swmr.Leg > 1)
+                    {
+                        <input type="hidden" name="viewHeatSheetEventResults[@(i)].Disqualified" class="clsDQ@(anchor) short" value="@(disqualified)" />
+                    }
+                </td>
+            </tr>
+                    i++;
+        }
+    </table>
+    }
+    <div>
+        <input type="submit" class="button" id="btnSave" value=" Save " />
+        <input type="button" class="button" id="btnCancel" value=" Cancel " />
+    </div>
+}

@@ -1,0 +1,15 @@
+﻿@using SwimomaticMVC.Models;
+<fieldset>
+    <h5>
+        Request Confirmation</h5>
+    <div>
+        <p>
+            Your request to have <b>@(((ViewSwimmer)ViewBag.ViewSwimmer).FirstName)</b> join
+            the <b>@(((ViewTeam)ViewBag.ViewTeam).TeamName)</b> for the <b>@(((ViewTeam)ViewBag.ViewTeam).SeasonDescription)</b>
+            season has been sent.</p>
+    </div>
+    <div>
+        <input type="button" id="btnClose" name="btnClose" value="Close" onclick="javascript:HideSwimmerTeamRequest();"
+            class="button" />
+    </div>
+</fieldset>

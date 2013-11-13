@@ -1,0 +1,51 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewSwimMeets
+<fieldset>
+    <div id="swimMeets">
+        <table class="data-table">
+            <tr>
+                <th>
+                    &nbsp;
+                </th>
+                <th>
+                    SwimMeet
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Location
+                </th>
+                <th>
+                    Teams
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+            @foreach (ViewSwimMeet vsm in Model.ViewSwimMeetList)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink("Heat Sheets", "Index", "HeatSheet", new { id = vsm.SwimMeetID }, null)
+                    </td>
+                    <td>
+                        @(vsm.Description)
+                    </td>
+                    <td>
+                        @(vsm.StartDate.ToShortDateString())
+                    </td>
+                    <td>
+                        @(vsm.LocationName)
+                    </td>
+                    <td>
+                        @(vsm.Teams)
+                    </td>
+                    <td style="text-align: right;">
+                        @Html.ActionLink("Results", "SwimMeetResults", "Result", new { SwimMeetID = vsm.SwimMeetID }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</fieldset>

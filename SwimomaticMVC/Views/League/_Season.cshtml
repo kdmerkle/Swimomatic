@@ -1,0 +1,229 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewSeason
+@{
+    string customDate = (Model.AgeClassRuleCustomDate.HasValue && Model.AgeClassRuleCustomDate.Value != DateTime.MinValue) ? Model.AgeClassRuleCustomDate.Value.ToString("MM/dd/yyyy") : "";
+    string sCustomDateDisplay = (Model.AgeClassRuleCustomDate.HasValue && Model.AgeClassRuleCustomDate.Value != DateTime.MinValue) ? "style=\"display:inline;\"" : "style=\"display:none;\"";
+    string startDate = (Model.StartDate.HasValue && Model.StartDate.Value != DateTime.MinValue) ? Model.StartDate.Value.ToString("MM/dd/yyyy") : "";
+    string endDate = (Model.EndDate.HasValue && Model.EndDate.Value != DateTime.MinValue) ? Model.EndDate.Value.ToString("MM/dd/yyyy") : "";
+}
+<fieldset>
+    @if (Model.IsAdmin)
+    {      
+        <div class="input-form">
+            <h5>
+                Season Details</h5>
+            @using (Ajax.BeginForm("SaveSeason", new AjaxOptions { UpdateTargetId = "Season", OnSuccess = "SaveSeasonSuccess" }))
+            {
+                @Html.ValidationSummary()
+                @Html.HiddenFor(m => m.SeasonID, new { @Value = Model.SeasonID })
+                @Html.HiddenFor(m => m.LeagueID, new { @Value = Model.LeagueID })
+                <div>
+                    <label>
+                        Description</label>
+                </div>    
+                <div>
+                    @Html.TextBoxFor(m => m.Description, new { @Value = Model.Description, @class = "input-box long" })
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+                <div>
+                    <label>
+                        Start Date</label>
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.StartDate, new { @Value = @startDate, @class = "input-box date" })
+                    @Html.ValidationMessageFor(m => m.StartDate)
+                </div>
+                <div>
+                    <label>
+                        End Date</label>
+                </div>
+                <div>
+                    @Html.TextBoxFor(m => m.EndDate, new { @Value = @endDate, @class = "input-box date" })
+                    @Html.ValidationMessageFor(m => m.EndDate)
+                </div>
+                <div>
+                    Choose the rule the League will use to determine the swimmers' ages for swim meets.
+                    <label>
+                        Age Class Rule</label>
+                </div>
+                <div>
+                    @Html.DropDownListFor(m => m.AgeClassRuleID, Model.AgeClassRules, new { @Value = Model.AgeClassRuleID, @class = "input-dropdown" })
+                    @Html.ValidationMessageFor(m => m.AgeClassRuleID)
+                </div>
+                <div id="customDate" @sCustomDateDisplay >
+                    <div>
+                        <label>
+                            Custom Date</label>
+                    </div>
+                    <div>
+                        @Html.TextBoxFor(m => m.AgeClassRuleCustomDate, new { @Value = @customDate, @class = "input-box date" })
+                        @Html.ValidationMessageFor(m => m.AgeClassRuleCustomDate)
+                    </div>
+                </div>
+                <div>
+                    Choose the scoring scheme(s) the League will use.
+                </div>
+                <div id="divScoringCustom">
+                    <h5>
+                        Dual/Triangle Meets</h5>
+                    <div>
+                        <label>
+                            Individual Events</label>
+                    </div>
+                    <div>
+                        @Html.TextBoxFor(m => m.ScoringCustomIndividual, new { @Value = Model.ScoringCustomIndividual, @class = "input-box medium", @title = "ex. 6,4,3,2" })
+                        @Html.ValidationMessageFor(m => m.ScoringCustomIndividual)
+                    </div>
+                    <div>
+                        <label>
+                            Relay Events</label>
+                    </div>
+                    <div>
+                        @Html.TextBoxFor(m => m.ScoringCustomRelay, new { @Value = Model.ScoringCustomRelay, @class = "input-box medium", @title = "ex. 12,8,6,4" })
+                        @Html.ValidationMessageFor(m => m.ScoringCustomRelay)
+                    </div>
+                    <h5>
+                        Invitational/Championship Meets</h5>
+                    <div>
+                        <label>
+                            Individual Events</label>
+                    </div>
+                    <div>
+                        @Html.TextBoxFor(m => m.ScoringFinalCustomIndividual, new { @Value = Model.ScoringFinalCustomIndividual, @class = "input-box medium", @title = "ex. 6,4,3,2" })
+                        @Html.ValidationMessageFor(m => m.ScoringFinalCustomIndividual)
+                    </div>
+                    <div>
+                        <label>
+                            Relay Events</label>
+                    </div>
+                    <div>
+                        @Html.TextBoxFor(m => m.ScoringFinalCustomRelay, new { @Value = Model.ScoringFinalCustomRelay, @class = "input-box medium", @title = "ex. 12,8,6,4" })
+                        @Html.ValidationMessageFor(m => m.ScoringFinalCustomRelay)
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" class="button" id="btnSave" value=" Save " />
+                    <input type="button" class="button" id="btnSeasonCancel" value=" Cancel " onclick="javascript:$('#Season').hide;$('#League').hide();" />
+                </div>
+            }
+        </div>
+    }
+    else
+    { 
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <label>
+                            League:</label>
+                    </td>
+                    <td class="tableText">
+                        @Model.LeagueName
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Season:</label>
+                    </td>
+                    <td class="tableText">
+                        @Model.Description
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Start Date:</label>
+                    </td>
+                    <td class="tableText">
+                        @startDate
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            End Date:</label>
+                    </td>
+                    <td class="tableText">
+                        @endDate
+                    </td>
+                </tr>
+                @if (Model.AgeClassRuleID == 1)
+                {
+                    <tr>
+                        <td>
+                            <label>
+                                Age Class Rule:</label>
+                        </td>
+                        <td class="tableText">
+                            @String.Format(Model.AgeClassRuleDescription, customDate)
+                        </td>
+                    </tr>
+                }
+                else
+                { 
+                    <tr>
+                        <td>
+                            <label>
+                                Age Class Rule:</label>
+                        </td>
+                        <td class="tableText">
+                            @Model.AgeClassRuleDescription
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td valign="top">
+                        <label>
+                            Scoring:</label>
+                    </td>
+                    <td>
+                        <table cellspacing="5px">
+                            <tr>
+                                <th align="center" colspan="2">
+                                    <label>
+                                        Dual/Triangle</label>
+                                </th>
+                                <th align="center" colspan="2">
+                                    <label>
+                                        Invitational/Championship</label>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td align="center" style="width: 60px;">
+                                    <label>
+                                        Individual</label>
+                                </td>
+                                <td align="center" style="width: 60px;">
+                                    <label>
+                                        Relay</label>
+                                </td>
+                                <td align="center" style="width: 60px;">
+                                    <label>
+                                        Individual</label>
+                                </td>
+                                <td align="center" style="width: 60px;">
+                                    <label>
+                                        Relay</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" class="tableText">@Model.ScoringCustomIndividual
+                                </td>
+                                <td align="center" class="tableText">
+                                    @Model.ScoringCustomRelay
+                                </td>
+                                <td align="center" class="tableText">
+                                    @Model.ScoringFinalCustomIndividual
+                                </td>
+                                <td align="center" class="tableText">
+                                    @Model.ScoringFinalCustomRelay
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    }
+</fieldset>

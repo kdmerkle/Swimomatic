@@ -1,0 +1,49 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewTeamLeagueRequest
+<fieldset>
+    <h5>
+        Select the League you would like to join.</h5>
+    <table width="75%" class="data-table">
+        <tr>
+            <th>
+                Select
+            </th>
+            <th>
+                League
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Season
+            </th>
+            <th>
+                Dates
+            </th>
+        </tr>
+        @foreach (ViewLeague vl in Model.ViewLeagues)
+        {
+            <tr>
+                <td style="text-align: center;">
+                    <input type="checkbox" id="chkSeason@(vl.SeasonID)" class="chkSeason" />
+                </td>
+                <td>
+                    @(vl.LeagueName)
+                </td>
+                <td>
+                    @(vl.LeagueDescription)
+                </td>
+                <td>
+                    @(vl.SeasonDescription)
+                </td>
+                <td>
+                    @(vl.StartDate.ToShortDateString() + " - " + vl.EndDate.ToShortDateString())
+                </td>
+            </tr>
+        }
+    </table>
+    <div>
+        <input type="button" class="button SaveTeamLeagueRequest" value="Send Request" id="@Model.UserTeamID" />
+        <input type="button" class="button ShowLeagueSearch" value="New Search"  id="@Model.UserTeamID" />
+    </div>
+</fieldset>

@@ -1,0 +1,48 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewSwimmer
+@{ViewSwimmer vs = (ViewSwimmer)ViewBag.Swimmer;}
+<fieldset>
+    <h5>
+        Swimmer Details</h5>
+    <div class="input-form">
+        @Html.ValidationSummary()
+        @using (Ajax.BeginForm("SaveSwimmer", new AjaxOptions { UpdateTargetId = "Swimmers", OnSuccess = "SaveSwimmerSuccess" }))
+        {
+            <div>
+                @Html.HiddenFor(m => m.SwimmerID, new { @Value = vs.SwimmerID })
+                @Html.LabelFor(m => m.FirstName)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.FirstName, new { @Value = vs.FirstName, @class = "input-box medium" })
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.LastName)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.LastName, new { @Value = vs.LastName, @class = "input-box medium" })
+                @Html.ValidationMessageFor(m => m.LastName)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.IsMale)
+            </div>
+            <div>
+                @Html.RadioButton("IsMale", "true", vs.IsMale)<span class="radioText">Male</span>
+                @Html.RadioButton("IsMale", "false", !vs.IsMale)<span class="radioText">Female</span>
+                @Html.ValidationMessageFor(m => m.IsMale)
+            </div>
+            <div>
+                @Html.LabelFor(m => m.BirthDate)
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.BirthDate, new { @Value = vs.BirthDate.ToShortDateString(), @class = "input-box date" })
+                @Html.ValidationMessageFor(m => m.BirthDate)
+            </div>
+            <div>
+                <input type="submit" id="btnSave" name="btnSave" value="Save" class="button" />
+                <input type="button" id="btnSwimmerCancel" value="Cancel" class="button" />
+            </div>
+        }
+    </div>
+</fieldset>
+

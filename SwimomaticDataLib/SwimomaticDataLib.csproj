@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CBEF4B66-83BE-478D-A45D-E06EB9D1754F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SwimomaticDataLib</RootNamespace>
+    <AssemblyName>SwimomaticDataLib</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LAAF">
+      <HintPath>..\Binaries\LAAF.dll</HintPath>
+    </Reference>
+    <Reference Include="LAAF.Data.SqlClient">
+      <HintPath>..\Binaries\LAAF.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Swimomatic.Entity\AgeClass.cs" />
+    <Compile Include="Swimomatic.Entity\AgeClassCollection.cs" />
+    <Compile Include="Swimomatic.Entity\AgeClassRule.cs" />
+    <Compile Include="Swimomatic.Entity\AgeClassRuleCollection.cs" />
+    <Compile Include="Swimomatic.Entity\Heat.cs" />
+    <Compile Include="Swimomatic.Entity\HeatCollection.cs" />
+    <Compile Include="Swimomatic.Entity\HeatSheet.cs" />
+    <Compile Include="Swimomatic.Entity\HeatSheetCollection.cs" />
+    <Compile Include="Swimomatic.Entity\HeatSheetEvent.cs" />
+    <Compile Include="Swimomatic.Entity\HeatSheetEventCollection.cs" />
+    <Compile Include="Swimomatic.Entity\HeatSheetTeam.cs" />
+    <Compile Include="Swimomatic.Entity\HeatSheetTeamCollection.cs" />
+    <Compile Include="Swimomatic.Entity\HeatSwimmer.cs" />
+    <Compile Include="Swimomatic.Entity\HeatSwimmerCollection.cs" />
+    <Compile Include="Swimomatic.Entity\LaneSequence.cs" />
+    <Compile Include="Swimomatic.Entity\LaneSequenceCollection.cs" />
+    <Compile Include="Swimomatic.Entity\League.cs" />
+    <Compile Include="Swimomatic.Entity\LeagueCollection.cs" />
+    <Compile Include="Swimomatic.Entity\Location.cs" />
+    <Compile Include="Swimomatic.Entity\LocationCollection.cs" />
+    <Compile Include="Swimomatic.Entity\Pool.cs" />
+    <Compile Include="Swimomatic.Entity\PoolCollection.cs" />
+    <Compile Include="Swimomatic.Entity\PoolConfig.cs" />
+    <Compile Include="Swimomatic.Entity\PoolConfigCollection.cs" />
+    <Compile Include="Swimomatic.Entity\Profile.cs" />
+    <Compile Include="Swimomatic.Entity\ProfileCollection.cs" />
+    <Compile Include="Swimomatic.Entity\ProfileSystemUser.cs" />
+    <Compile Include="Swimomatic.Entity\ProfileSystemUserCollection.cs" />
+    <Compile Include="Swimomatic.Entity\Region.cs" />
+    <Compile Include="Swimomatic.Entity\RegionCollection.cs" />
+    <Compile Include="Swimomatic.Entity\ReportHeatSheetEvent.cs" />
+    <Compile Include="Swimomatic.Entity\ReportHeatSheetEventCollection.cs" />
+    <Compile Include="Swimomatic.Entity\Result.cs" />
+    <Compile Include="Swimomatic.Entity\ResultCollection.cs" />
+    <Compile Include="Swimomatic.Entity\Role.cs" />
+    <Compile Include="Swimomatic.Entity\RoleCollection.cs" />
+    <Compile Include="Swimomatic.Entity\RoleSystemUser.cs" />
+    <Compile Include="Swimomatic.Entity\RoleSystemUserCollection.cs" />
+    <Compile Include="Swimomatic.Entity\Score.cs" />
+    <Compile Include="Swimomatic.Entity\ScoreCollection.cs" />
+    <Compile Include="Swimomatic.Entity\ScoringScheme.cs" />
+    <Compile Include="Swimomatic.Entity\ScoringSchemeCollection.cs" />
+    <Compile Include="Swimomatic.Entity\Season.cs" />
+    <Compile Include="Swimomatic.Entity\SeasonCollection.cs" />
+    <Compile Include="Swimomatic.Entity\SeasonScoringScheme.cs" />
+    <Compile Include="Swimomatic.Entity\SeasonScoringSchemeCollection.cs" />
+    <Compile Include="Swimomatic.Entity\Split.cs" />
+    <Compile Include="Swimomatic.Entity\SplitCollection.cs" />
+    <Compile Include="Swimomatic.Entity\Stroke.cs" />
+    <Compile Include="Swimomatic.Entity\StrokeCollection.cs" />
+    <Compile Include="Swimomatic.Entity\SwimEvent.cs" />
+    <Compile Include="Swimomatic.Entity\SwimEventCollection.cs" />
+    <Compile Include="Swimomatic.Entity\SwimMeet.cs" />
+    <Compile Include="Swimomatic.Entity\SwimMeetCollection.cs" />
+    <Compile Include="Swimomatic.Entity\SwimMeetTeam.cs" />
+    <Compile Include="Swimomatic.Entity\SwimMeetTeamCollection.cs" />
+    <Compile Include="Swimomatic.Entity\Swimmer.cs" />
+    <Compile Include="Swimomatic.Entity\SwimmerCollection.cs" />
+    <Compile Include="Swimomatic.Entity\SwimmerTeamRequest.cs" />
+    <Compile Include="Swimomatic.Entity\SwimmerTeamRequestCollection.cs" />
+    <Compile Include="Swimomatic.Entity\SwimmerTeamSeason.cs" />
+    <Compile Include="Swimomatic.Entity\SwimmerTeamSeasonCollection.cs" />
+    <Compile Include="Swimomatic.Entity\SystemUser.cs" />
+    <Compile Include="Swimomatic.Entity\SystemUserCollection.cs" />
+    <Compile Include="Swimomatic.Entity\Team.cs" />
+    <Compile Include="Swimomatic.Entity\TeamCollection.cs" />
+    <Compile Include="Swimomatic.Entity\TeamLeagueRequest.cs" />
+    <Compile Include="Swimomatic.Entity\TeamLeagueRequestCollection.cs" />
+    <Compile Include="Swimomatic.Entity\TeamSeason.cs" />
+    <Compile Include="Swimomatic.Entity\TeamSeasonCollection.cs" />
+    <Compile Include="Swimomatic.Entity\UOM.cs" />
+    <Compile Include="Swimomatic.Entity\UOMCollection.cs" />
+    <Compile Include="Swimomatic.Entity\UserLeague.cs" />
+    <Compile Include="Swimomatic.Entity\UserLeagueCollection.cs" />
+    <Compile Include="Swimomatic.Entity\UserLocation.cs" />
+    <Compile Include="Swimomatic.Entity\UserLocationCollection.cs" />
+    <Compile Include="Swimomatic.Entity\UserSwimMeet.cs" />
+    <Compile Include="Swimomatic.Entity\UserSwimMeetCollection.cs" />
+    <Compile Include="Swimomatic.Entity\UserSwimmer.cs" />
+    <Compile Include="Swimomatic.Entity\UserSwimmerCollection.cs" />
+    <Compile Include="Swimomatic.Entity\UserTeam.cs" />
+    <Compile Include="Swimomatic.Entity\UserTeamCollection.cs" />
+    <Compile Include="Swimomatic.Entity\_AgeClass.cs" />
+    <Compile Include="Swimomatic.Entity\_AgeClassRule.cs" />
+    <Compile Include="Swimomatic.Entity\_Heat.cs" />
+    <Compile Include="Swimomatic.Entity\_HeatSheet.cs" />
+    <Compile Include="Swimomatic.Entity\_HeatSheetEvent.cs" />
+    <Compile Include="Swimomatic.Entity\_HeatSheetTeam.cs" />
+    <Compile Include="Swimomatic.Entity\_HeatSwimmer.cs" />
+    <Compile Include="Swimomatic.Entity\_LaneSequence.cs" />
+    <Compile Include="Swimomatic.Entity\_League.cs" />
+    <Compile Include="Swimomatic.Entity\_Location.cs" />
+    <Compile Include="Swimomatic.Entity\_Pool.cs" />
+    <Compile Include="Swimomatic.Entity\_PoolConfig.cs" />
+    <Compile Include="Swimomatic.Entity\_Profile.cs" />
+    <Compile Include="Swimomatic.Entity\_ProfileSystemUser.cs" />
+    <Compile Include="Swimomatic.Entity\_Region.cs" />
+    <Compile Include="Swimomatic.Entity\_ReportHeatSheetEvent.cs" />
+    <Compile Include="Swimomatic.Entity\_Result.cs" />
+    <Compile Include="Swimomatic.Entity\_Role.cs" />
+    <Compile Include="Swimomatic.Entity\_RoleSystemUser.cs" />
+    <Compile Include="Swimomatic.Entity\_Score.cs" />
+    <Compile Include="Swimomatic.Entity\_ScoringScheme.cs" />
+    <Compile Include="Swimomatic.Entity\_Season.cs" />
+    <Compile Include="Swimomatic.Entity\_SeasonScoringScheme.cs" />
+    <Compile Include="Swimomatic.Entity\_Split.cs" />
+    <Compile Include="Swimomatic.Entity\_Stroke.cs" />
+    <Compile Include="Swimomatic.Entity\_SwimEvent.cs" />
+    <Compile Include="Swimomatic.Entity\_SwimMeet.cs" />
+    <Compile Include="Swimomatic.Entity\_SwimMeetTeam.cs" />
+    <Compile Include="Swimomatic.Entity\_Swimmer.cs" />
+    <Compile Include="Swimomatic.Entity\_SwimmerTeamRequest.cs" />
+    <Compile Include="Swimomatic.Entity\_SwimmerTeamSeason.cs" />
+    <Compile Include="Swimomatic.Entity\_SystemUser.cs" />
+    <Compile Include="Swimomatic.Entity\_Team.cs" />
+    <Compile Include="Swimomatic.Entity\_TeamLeagueRequest.cs" />
+    <Compile Include="Swimomatic.Entity\_TeamSeason.cs" />
+    <Compile Include="Swimomatic.Entity\_UOM.cs" />
+    <Compile Include="Swimomatic.Entity\_UserLeague.cs" />
+    <Compile Include="Swimomatic.Entity\_UserLocation.cs" />
+    <Compile Include="Swimomatic.Entity\_UserSwimMeet.cs" />
+    <Compile Include="Swimomatic.Entity\_UserSwimmer.cs" />
+    <Compile Include="Swimomatic.Entity\_UserTeam.cs" />
+    <Compile Include="Swimomatic.Manager\AgeClassManager.cs" />
+    <Compile Include="Swimomatic.Manager\AgeClassRuleManager.cs" />
+    <Compile Include="Swimomatic.Manager\HeatManager.cs" />
+    <Compile Include="Swimomatic.Manager\HeatSheetEventManager.cs" />
+    <Compile Include="Swimomatic.Manager\HeatSheetManager.cs" />
+    <Compile Include="Swimomatic.Manager\HeatSheetTeamManager.cs" />
+    <Compile Include="Swimomatic.Manager\HeatSwimmerManager.cs" />
+    <Compile Include="Swimomatic.Manager\LaneSequenceManager.cs" />
+    <Compile Include="Swimomatic.Manager\LeagueManager.cs" />
+    <Compile Include="Swimomatic.Manager\LocationManager.cs" />
+    <Compile Include="Swimomatic.Manager\PoolConfigManager.cs" />
+    <Compile Include="Swimomatic.Manager\PoolManager.cs" />
+    <Compile Include="Swimomatic.Manager\ProfileManager.cs" />
+    <Compile Include="Swimomatic.Manager\ProfileSystemUserManager.cs" />
+    <Compile Include="Swimomatic.Manager\RegionManager.cs" />
+    <Compile Include="Swimomatic.Manager\ReportManager.cs" />
+    <Compile Include="Swimomatic.Manager\ResultManager.cs" />
+    <Compile Include="Swimomatic.Manager\RoleManager.cs" />
+    <Compile Include="Swimomatic.Manager\RoleSystemUserManager.cs" />
+    <Compile Include="Swimomatic.Manager\ScoreManager.cs" />
+    <Compile Include="Swimomatic.Manager\ScoringSchemeManager.cs" />
+    <Compile Include="Swimomatic.Manager\SeasonManager.cs" />
+    <Compile Include="Swimomatic.Manager\SeasonScoringSchemeManager.cs" />
+    <Compile Include="Swimomatic.Manager\SplitManager.cs" />
+    <Compile Include="Swimomatic.Manager\StrokeManager.cs" />
+    <Compile Include="Swimomatic.Manager\SwimEventManager.cs" />
+    <Compile Include="Swimomatic.Manager\SwimMeetManager.cs" />
+    <Compile Include="Swimomatic.Manager\SwimMeetTeamManager.cs" />
+    <Compile Include="Swimomatic.Manager\SwimmerManager.cs" />
+    <Compile Include="Swimomatic.Manager\SwimmerTeamRequestManager.cs" />
+    <Compile Include="Swimomatic.Manager\SwimmerTeamSeasonManager.cs" />
+    <Compile Include="Swimomatic.Manager\SystemUserManager.cs" />
+    <Compile Include="Swimomatic.Manager\TeamLeagueRequestManager.cs" />
+    <Compile Include="Swimomatic.Manager\TeamManager.cs" />
+    <Compile Include="Swimomatic.Manager\TeamSeasonManager.cs" />
+    <Compile Include="Swimomatic.Manager\UOMManager.cs" />
+    <Compile Include="Swimomatic.Manager\UserLeagueManager.cs" />
+    <Compile Include="Swimomatic.Manager\UserLocationManager.cs" />
+    <Compile Include="Swimomatic.Manager\UserSwimMeetManager.cs" />
+    <Compile Include="Swimomatic.Manager\UserSwimmerManager.cs" />
+    <Compile Include="Swimomatic.Manager\UserTeamManager.cs" />
+    <Compile Include="Swimomatic.Manager\_AgeClassManager.cs" />
+    <Compile Include="Swimomatic.Manager\_AgeClassRuleManager.cs" />
+    <Compile Include="Swimomatic.Manager\_HeatManager.cs" />
+    <Compile Include="Swimomatic.Manager\_HeatSheetEventManager.cs" />
+    <Compile Include="Swimomatic.Manager\_HeatSheetManager.cs" />
+    <Compile Include="Swimomatic.Manager\_HeatSheetTeamManager.cs" />
+    <Compile Include="Swimomatic.Manager\_HeatSwimmerManager.cs" />
+    <Compile Include="Swimomatic.Manager\_LaneSequenceManager.cs" />
+    <Compile Include="Swimomatic.Manager\_LeagueManager.cs" />
+    <Compile Include="Swimomatic.Manager\_LocationManager.cs" />
+    <Compile Include="Swimomatic.Manager\_PoolConfigManager.cs" />
+    <Compile Include="Swimomatic.Manager\_PoolManager.cs" />
+    <Compile Include="Swimomatic.Manager\_ProfileManager.cs" />
+    <Compile Include="Swimomatic.Manager\_ProfileSystemUserManager.cs" />
+    <Compile Include="Swimomatic.Manager\_RegionManager.cs" />
+    <Compile Include="Swimomatic.Manager\_ReportManager.cs" />
+    <Compile Include="Swimomatic.Manager\_ResultManager.cs" />
+    <Compile Include="Swimomatic.Manager\_RoleManager.cs" />
+    <Compile Include="Swimomatic.Manager\_RoleSystemUserManager.cs" />
+    <Compile Include="Swimomatic.Manager\_ScoreManager.cs" />
+    <Compile Include="Swimomatic.Manager\_ScoringSchemeManager.cs" />
+    <Compile Include="Swimomatic.Manager\_SeasonManager.cs" />
+    <Compile Include="Swimomatic.Manager\_SeasonScoringSchemeManager.cs" />
+    <Compile Include="Swimomatic.Manager\_SplitManager.cs" />
+    <Compile Include="Swimomatic.Manager\_StrokeManager.cs" />
+    <Compile Include="Swimomatic.Manager\_SwimEventManager.cs" />
+    <Compile Include="Swimomatic.Manager\_SwimMeetManager.cs" />
+    <Compile Include="Swimomatic.Manager\_SwimMeetTeamManager.cs" />
+    <Compile Include="Swimomatic.Manager\_SwimmerManager.cs" />
+    <Compile Include="Swimomatic.Manager\_SwimmerTeamRequestManager.cs" />
+    <Compile Include="Swimomatic.Manager\_SwimmerTeamSeasonManager.cs" />
+    <Compile Include="Swimomatic.Manager\_SystemUserManager.cs" />
+    <Compile Include="Swimomatic.Manager\_TeamLeagueRequestManager.cs" />
+    <Compile Include="Swimomatic.Manager\_TeamManager.cs" />
+    <Compile Include="Swimomatic.Manager\_TeamSeasonManager.cs" />
+    <Compile Include="Swimomatic.Manager\_UOMManager.cs" />
+    <Compile Include="Swimomatic.Manager\_UserLeagueManager.cs" />
+    <Compile Include="Swimomatic.Manager\_UserLocationManager.cs" />
+    <Compile Include="Swimomatic.Manager\_UserSwimMeetManager.cs" />
+    <Compile Include="Swimomatic.Manager\_UserSwimmerManager.cs" />
+    <Compile Include="Swimomatic.Manager\_UserTeamManager.cs" />
+    <Compile Include="Swimomatic.ServiceProvider\SwimomaticServiceProvider.cs" />
+    <Compile Include="Swimomatic.ServiceProvider\SwimomaticServiceProviderSQL.cs" />
+    <Compile Include="SwimomaticEntityContext.cs" />
+    <Compile Include="_SwimomaticEntityContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,43 @@
+﻿@using SwimomaticMVC.Models;
+@model List<ViewLeague>
+<h5>
+    Select the League whose rules will be used in this Swim Meet.</h5>
+<table width="75%" class="data-table">
+    <tr>
+        <th>
+            Select
+        </th>
+        <th>
+            State
+        </th>
+        <th>
+            League
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    @foreach (ViewLeague vl in Model)
+    {
+        <tr>
+            <td style="text-align: center;">
+                <input class="leagueCheckbox" type="checkbox" id="chkLeague@(vl.LeagueID)" name="chkLeague@(vl.LeagueID)"
+                    onclick="javascript:GetSeasons(@(vl.LeagueID));" />
+            </td>
+            <td>
+                @(vl.RegionAbbrev)
+            </td>
+            <td class="leagueName">
+                @(vl.LeagueName)
+            </td>
+            <td>
+                @(vl.LeagueDescription)
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    <input type="button" class="button" id="btnLeagueBack" onclick="javascript:ShowHide('swimMeet','leagues');"
+        value="<< Back" />
+    <input type="button" class="button" id="btnLeagueNext" value="Next >>" />
+</div>

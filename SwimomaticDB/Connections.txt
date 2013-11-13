@@ -1,0 +1,4 @@
+DBRefFolders found in your dbp file
+Connect String: Data Source=LASRV4\LASQL2005;Initial Catalog=SwimomaticDev;Persist Security Info=True;User ID=sa
+Provider: Microsoft SQL Server
+

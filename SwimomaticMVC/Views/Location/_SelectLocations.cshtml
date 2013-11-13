@@ -1,0 +1,56 @@
+﻿@using SwimomaticMVC.Models;
+@model List<ViewLocation>
+<div>
+    <table width="75%" class="data-table">
+        <tr>
+            <th>
+                Select
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                State
+            </th>
+            <th>
+                Zip Code
+            </th>
+        </tr>
+        @foreach (ViewLocation vl in Model)
+        {
+            <tr>
+                <td style="text-align: center;">
+                    <input class="locationCheckbox" type="checkbox" id="chkLocation@(vl.LocationID)"
+                    name="chkLocation@(vl.LocationID)" />
+                </td>
+                <td class="locationName">
+                    @(vl.Name)
+                </td>
+                <td>
+                    @(vl.Address)
+                </td>
+                <td>
+                    @(vl.City)
+                </td>
+                <td>
+                    @(vl.RegionAbbrev)
+                </td>
+                <td>
+                    @(vl.PostalCode)
+                </td>
+            </tr>
+        }
+    </table>
+    <ul class="bodyMenu">
+        <li><a id="btnShowLocationSearch" onclick="javascript:$('#locationSearch').show();">
+            Search for another Location</a> </li>
+        <li><a id="btnShowLocation" href="@Url.Content("~/Location/Index/0")">Create a new Location</a>
+        </li>
+    </ul>
+</div>

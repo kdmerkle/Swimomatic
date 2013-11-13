@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "Teams";
+ }
+@section script{
+    <script src="@Url.Content("~/Scripts/Views/Team.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Views/Shared.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        function GetLocations() {
+            //get json object of Locations and Pool Details for given search criteria
+            var regionID = $("#RegionSearch").val();
+            var city = $("#CitySearch").val();
+            $.ajax({
+                url: '/Team/GetLocations?RegionID=' + regionID + '&City=' + city,
+                dataType: 'json',
+                type: "post",
+                success: GetPoolSuccess,
+                error: AjaxError
+            });
+        }
+        function GetPoolSuccess(event, ui) {
+            $.each(event, function (index, data) {
+                SetMarkers(data);
+            });
+        }
+
+        function SetMarkers(Location) {
+            var pos = new google.maps.LatLng(Location.Latitude, Location.Longitude);
+            var marker = new google.maps.Marker({
+                position: pos,
+                map: map,
+                title: Location.Name
+            });
+            google.maps.event.addListener(marker, 'click', function () {
+                map.setZoom(10);
+                GetHomePools(Location.LocationID);
+            });
+        }
+        function GetHomePools(locationID) {
+            LoadTag('#HomePool', '/Team/PoolConfigs?LocationID=' + locationID);
+        }
+        function AjaxError(data) {
+            alert(data);
+        }
+        function AddPool(poolConfigID) {
+        }
+        function EditPoolConfig(poolConfigID) {
+        }
+
+        //mutually exclusive PoolConfig checkbox
+        $(".chkHomePoolConfigID").live("click", function (event) {
+            var homePoolConfigID = this.id.substring(19);
+            var chkId = this.id;
+            $(".chkHomePoolConfigID").each(function (index) {
+                if ($(this).attr('id') != chkId) {
+                    $(this).attr('checked', false);
+                }
+            });
+        });
+
+        $(".ShowTeam").live("click", function () {
+            var userTeamID = $(this).attr("id");
+            ShowTeam(userTeamID);
+        });
+
+        $(".ShowRoster").live("click", function () {
+            var teamSeasonID = $(this).attr("id");
+            ShowRoster(teamSeasonID);
+        });
+
+        $(".ShowTeamSeasons").live("click", function () {
+            var teamID = $(this).attr("id");
+            ShowTeamSeasons(teamID);
+        });
+
+        $(".ShowLeagueSearch").live("click", function () {
+            var userTeamID = $(this).attr("id");
+            ShowLeagueSearch(userTeamID);
+        });
+
+        $(".SaveTeamLeagueRequest").live("click", function () {
+            var userTeamID = $(this).attr("id");
+            SaveTeamLeagueRequest(userTeamID);
+        });
+
+        $(".ApproveRequest").live("click", function () {
+            var str = $(this).attr("id");
+            var swimmerTeamRequestID = str.substring(0, str.indexOf("|"));
+            var teamSeasonID = str.substring(str.indexOf("|") + 1);
+            ApproveRequest(swimmerTeamRequestID, teamSeasonID);
+        });
+
+
+    </script>
+}
+<div id="PoolSearch" title="Pool Search">
+    @Html.Action("PoolSearch","Pool")
+</div>
+<div id="Teams">
+    @Html.Action("Teams")
+</div>
+<div id="Team">
+</div>
+<div id="LeagueSearch">
+</div>
+<div id="TeamLeagueRequest">
+</div>
+<div id="TeamSeasons">
+</div>
+<div id="Roster">
+    <fieldset>
+        <div id="SwimmerTeamRequests">
+        </div>
+        <div id="SwimmerTeamSeasons">
+        </div>
+    </fieldset>
+</div>
+@section SideNav{
+    <ul>
+        <li class="first arrow"><a class="ShowTeam" href="javascript:void(0);" id="0">Create a new Team</a></li>
+    </ul>
+}

@@ -1,0 +1,75 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewPool
+@{ViewPool vp = ViewBag.Pool;}
+<fieldset>
+    <h5>
+        Pool Details</h5>
+    <div class="input-form">
+        @Html.ValidationSummary()
+        @using (Ajax.BeginForm("SavePool", new AjaxOptions { UpdateTargetId = "PoolConfigs", OnSuccess = "SavePoolSuccess" }))
+        {
+            <div>
+                @Html.HiddenFor(m => m.LocationID, new { @Value = vp.LocationID })
+                @Html.HiddenFor(m => m.PoolID, new { @Value = vp.PoolID })
+                <label>
+                    Pool Description</label>
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.PoolDescription, new { @Value = Html.Encode(vp.PoolDescription) })
+                @Html.ValidationMessageFor(m => m.Description)
+            </div>
+            <div>
+                <label>
+                    Setup Description</label>
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.Description, new { @Value = Html.Encode(vp.Description) })
+                @Html.ValidationMessageFor(m => m.Description)
+            </div>
+            
+            <div id="majorUOM">
+                @if (vp.UOMID == 1)
+                {<label>@("Meters")
+                </label>
+                }
+                else
+                {
+                    <label>@("Yards")</label>
+                }
+            </div>
+           
+            <div>
+                @Html.TextBoxFor(m => m.LengthMajor, new { @Value = vp.LengthMajor })
+                @Html.DropDownListFor(m => m.UOMID, vp.UOMs, new { @Value = vp.UOMID, @onchange = "javascript:SetUOMMinor();" })
+                @Html.ValidationMessageFor(m => m.LaneLength)
+            </div>
+            <div id="minorUOM">
+                @if (vp.UOMID == 1)
+                {
+                    <label>@("Centimeters")</label>
+                }
+                else
+                {
+                    <label>@("Inches")</label>
+                }
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.LengthMinor, new { @Value = vp.LengthMinor })
+                @Html.ValidationMessageFor(m => m.LengthMinor)
+            </div>
+            <div>
+                <label>
+                    Lanes</label>
+            </div>
+            <div>
+                @Html.TextBoxFor(m => m.LaneCount, new { @Value = vp.LaneCount })
+                @Html.ValidationMessageFor(m => m.LaneCount)
+            </div>
+            <div>
+                <input type="submit" id="btnSave" name="btnSave" value="Save" class="button" />
+                <input type="button" id="btnCancel" name="btnCancel" value="Cancel" class="button"
+                    onclick="javascript:$('#Pool').hide();" />
+            </div>
+        }
+    </div>
+</fieldset>

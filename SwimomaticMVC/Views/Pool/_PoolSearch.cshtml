@@ -1,0 +1,52 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewPoolSearch
+<script type="text/javascript">
+    var geocoder = new google.maps.Geocoder();
+    var map;
+    function InitializeMap(address) {
+        var zoom = 12;
+        var latlng;
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                latlng = results[0].geometry.location;
+                var myOptions = {
+                    zoom: zoom,
+                    center: latlng,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+            } else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+        });
+    }
+
+    //        var state = $("#RegionSearch option:selected").text();
+    //        var city = $("#CitySearch option:selected").text();
+    //        var address;
+    //        if (city == '<All Cities>' || city == '<Select>') {
+    //            address = state;
+    //            zoom = 7;
+    //        }
+    //        else {
+    //            address = city + ', ' + state;
+    //        }
+
+</script>
+<div>
+    <div id="map_canvas" style="width: 500px; height: 500px;">
+    </div>
+    <div>
+        <h5>
+            Search for a Pool</h5>
+        @Html.Hidden("hdnCityState", Model.City + "," + Model.RegionAbbrev)
+        <label for="RegionSearch">
+            State:</label>
+        @Html.DropDownList("RegionSearch", Model.Regions, "<Select>", new { @class = "input-dropdown", @value = Model.Location.RegionID })
+        <label for="CitySearch">
+            City:</label>
+        @Html.DropDownList("CitySearch", Model.Cities, "<Select>", new { @class = "input-dropdown", @value = Model.Location.City })
+        <input type="button" id="btnPoolSearch" name="btnPoolSearch" value="Search" class="button"
+            onclick="javascript:GetMap();" />
+    </div>
+</div>

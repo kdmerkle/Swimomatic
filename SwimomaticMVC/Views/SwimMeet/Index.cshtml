@@ -1,0 +1,150 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewSwimMeet
+@{
+    ViewBag.Title = "Swim Meets";
+}
+<div id="confirmDelete" title="Delete the Swim Meet?" style="display: none;">
+    <input type="hidden" id="deleteSwimMeetID" />
+    This Swim Meet will be permanently deleted. Are you sure?
+</div>
+<div>
+    <fieldset>
+        <h2>
+            Swim Meets</h2>
+        <div id="swimMeets">
+            @Html.Action("SwimMeets", "SwimMeet")
+        </div>
+        <div class="wizard" id="swimMeet">
+            <h5>
+                Enter the Start &amp; End Dates and a short description of the Swim Meet.</h5>
+            <label>
+                Start Date:</label>
+            <input type="text" id="StartDate" name="StartDate" class="input-box date" />
+            <label>
+                End Date:</label>
+            <input type="text" id="EndDate" name="EndDate" class="input-box date" />
+            <label>
+                Description:</label>
+            <input type="text" id="Description" name="Description" maxlength="250" class="input-box long" />
+            <label>
+                Swim Meet Type:</label>
+            <input type="radio" id="radSwimMeetType1" name="SwimMeetTypeID" value="1" checked="checked" />Dual-Triangle
+            <input type="radio" id="radSwimMeetType3" name="SwimMeetTypeID" value="3" />Invitational-Championship
+            <p>
+                <input type="button" id="btnDatesNext" name="btnDatesNext" value="Next >>" class="button" /></p>
+        </div>
+        <div class="wizard" id="leagues">
+            @Html.Action("Leagues", "SwimMeet")
+        </div>
+        <div class="wizard" id="seasons">
+        </div>
+        <div class="wizard" id="teams">
+        </div>
+        <div class="wizard" id="locationSearch">
+            @Html.Action("LocationSearch", "Location")
+        </div>
+        <div class="wizard" id="locations">
+            <h5>
+                Select the location for the Swim Meet or search for another location.</h5>
+            <div id="locationList">
+                @Html.Action("SelectLocations", "Location")</div>
+            <div>
+                <input type="button" class="button" id="btnLocationBack" onclick="javascript:ShowHide('teams','locations');"
+                    value="<< Back" />
+                <input type="button" class="button" id="btnLocationNext" value="Next >>" />
+            </div>
+        </div>
+        <div id="submitSwimMeet">
+            <h5>
+                Swim Meet Summary:</h5>
+            <table>
+                <tr>
+                    <td>
+                        <label>
+                            Description:</label>
+                    </td>
+                    <td>
+                        <label id="sumDescription" class="displayData">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Start Date:</label>
+                    </td>
+                    <td>
+                        <label id="sumStartDate" class="displayData">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            End Date:</label>
+                    </td>
+                    <td>
+                        <label id="sumEndDate" class="displayData">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            League:</label>
+                    </td>
+                    <td>
+                        <label id="sumLeague" class="displayData">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Season:</label>
+                    </td>
+                    <td>
+                        <label id="sumSeason" class="displayData">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Teams:</label>
+                    </td>
+                    <td>
+                        <label id="sumTeams" class="displayData">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            Location:</label>
+                    </td>
+                    <td>
+                        <label id="sumLocation" class="displayData">
+                        </label>
+                    </td>
+                </tr>
+            </table>
+            <input type="button" id="btnSummaryBack" name="btnSummaryBack" value="<< Back" class="button"
+                onclick="javascript:ShowHide('locations','submitSwimMeet');" />
+            <input type="button" id="btnSave" name="btnSave" value="Save" class="button" />
+            @Html.ActionLink("Cancel", "Index", "SwimMeet", new { @class = "button" })
+        </div>
+    </fieldset>
+</div>
+@section script{
+    <script src="@Url.Content("~/Scripts/Views/SwimMeet.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Views/Shared.js")" type="text/javascript"></script>
+}
+@section  SideNav{
+    @if (Model.HasTeamSeasons)
+    {
+        <ul>
+            <li class="first arrow"><a href="javascript:void(0);" id="lnkAddSwimMeet" onclick="javascript:AddSwimMeet();">
+                Create a new Swim Meet</a></li></ul>
+    }
+}

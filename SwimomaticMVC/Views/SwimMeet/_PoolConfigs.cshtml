@@ -1,0 +1,66 @@
+﻿@using SwimomaticMVC.Models;
+@model List<ViewPoolConfig> 
+<fieldset>
+    <h5>
+        Select the Pool(s) at the [Selected Location] that will be used in the Swim Meet.</h5>
+    <table class="data-table">
+        <tr>
+            <th>
+                Select
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Pool
+            </th>
+            <th>
+                Length
+            </th>
+            <th>
+                Lanes
+            </th>
+        </tr>
+        @foreach (ViewPoolConfig vpc in Model)
+        {
+            <tr>
+                <td style="text-align: center;">
+                    <input type="checkbox" id="chk@(vpc.PoolConfigID)" name="chk@(vpc.PoolConfigID)" />
+                </td>
+                <td>
+                    @(vpc.LocationName)
+                </td>
+                <td>
+                    @(vpc.PoolDescription)
+                </td>
+                <td>
+                    @(vpc.LengthDescription)
+                </td>
+                <td>
+                    @(vpc.LaneCount.ToString())
+                </td>
+            </tr>
+        }
+    </table>
+    <div>
+        <p>
+            Some pools can be setup in multiple arrangements, such as long course, short course,
+            etc. If one of the Pools above is to be set up differently for this or future meets,
+            click the button below to create and store a new setup.<br />
+        </p>
+        <input type="button" class="button" id="btnAddPoolConfig" onclick="javascript:Show('AddPoolConfig');"
+            value="Add a new Setup to this Pool" />
+        <p>
+            If this location actually has more than one pool and all of them are not shown in
+            the table above, click the link to add a new Pool to this Location.<br />
+        </p>
+        <input type="button" class="button" id="btnAddPool" onclick="javascript:Show('AddPool');"
+            value="Add a new Pool to this Location" />
+    </div>
+    <div>
+        <input type="button" class="button" id="btnPoolConfigBack" onclick="javascript:ShowHide('locations','poolConfigs');"
+            value="<< Back" />
+        <input type="button" class="button" id="btnPoolConfigNext" onclick="javascript:ShowHide('submitSwimMeet','poolConfigs');"
+            value="Next >>" />
+    </div>
+</fieldset>

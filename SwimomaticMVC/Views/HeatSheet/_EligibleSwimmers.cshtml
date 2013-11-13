@@ -1,0 +1,79 @@
+﻿@using SwimomaticMVC.Models;
+@model ViewEligibleSwimmers
+
+<div>
+    @using (Ajax.BeginForm("SeedHeatSheetEvent", new AjaxOptions { UpdateTargetId = "heats" + Model.HeatSheetEventID.ToString(), OnSuccess = "SeedHeatSheetEventSuccess" }))
+    {
+        <table width="75%" class="data-table">
+            <caption>
+                Eligible Swimmers
+            </caption>
+            <tr>
+                <th>
+                    Team
+                </th>
+                <th>
+                    Swimmer
+                </th>
+                <th>
+                    Age<br />
+                    at<br />
+                    Meet
+                </th>
+                <th>
+                    Most<br />
+                    Recent
+                </th>
+                <th>
+                    Season<br />
+                    Best
+                </th>
+                <th>
+                    Personal<br />
+                    Best
+                </th>
+                <th>
+                    Select
+                </th>
+            </tr>
+            @{int i = 0;
+              foreach (ViewEligibleSwimmer vs in Model.ViewEligibleSwimmerList)
+              {
+                <tr>
+                    <td>
+                        @(vs.TeamNameAbbrev)
+                    </td>
+                    <td>
+                        @(vs.LastFirstName)
+                    </td>
+                    <td>
+                        @(vs.AgeAtMeet)
+                    </td>
+                    <td>
+                        @(vs.MostRecent.ToString("#.00"))
+                    </td>
+                    <td>
+                        @(vs.SeasonBest.ToString("#.00"))
+                    </td>
+                    <td>
+                        @(vs.PersonalBest.ToString("#.00"))
+                    </td>
+                    <td>
+                        <input type="hidden" name="vess.ViewEligibleSwimmerList.Index" value="@(i.ToString())"
+                    />
+                        <input type="checkbox" name="@("vess.ViewEligibleSwimmerList[" + i.ToString() + "].SwimmerTeamSeasonID")"
+                    value="@(vs.SwimmerTeamSeasonID)" />
+                    </td>
+                </tr>
+                  i++;
+              }
+            }
+        </table>
+        <div>
+            <input type="hidden" name="vess.HeatSheetEventID" value="@(Model.HeatSheetEventID)" />
+            <input type="submit" id="btnSeed" name="btnSave" value="Seed" class="button" />
+            <input type="button" id="btnCancel" name="btnCancel" value="Cancel" onclick="javascript:HideElgibleSwimmers();"
+                class="button" />
+        </div>
+    }
+</div>

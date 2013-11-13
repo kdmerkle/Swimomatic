@@ -1,0 +1,41 @@
+@using SwimomaticMVC.Models;
+@{
+    ViewBag.Title = "Swim Meets";
+    Layout = null;
+}
+@using Helpers;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="description" content="Description of your web page goes here." />
+    <meta name="keywords" content="swimomatic,swim meet,heat sheet,web based,free,online." />
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="@Url.Content("~/Content/images/favicon.ico")" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" media="interactive, braille, emboss, handheld, projection, screen, tty, tv" />
+    <link href="@Url.Content("~/Content/jquery-ui-1.8.2.custom.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="header-container">
+        <div class="nav-login">
+            <ul>
+                <li class="first">
+                    @Html.Partial("_LogOnPartial") </li>
+            </ul>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <h2>
+        Swim Meets</h2>
+    <div class="nav-main">
+        <ul>
+            <li class="first"><a href="/">Home</a></li>
+            <li class="first active"><span class="active"></span><a href="/SwimMeet">Swim Meets</a></li>
+        </ul>
+    </div>
+    <div id="swimMeets">
+        @Html.Action("SwimMeets", "SwimMeet")
+    </div>
+</body>
+</html>
