@@ -1,0 +1,146 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\GitHub\\Swimomatic\\AthletePlatform\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6CC6EE50-FCA3-4CED-921A-7E7E2A63021E}|AthletePlatformAPI\\AthletePlatformAPI.csproj|c:\\github\\swimomatic\\athleteplatform\\athleteplatformapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6CC6EE50-FCA3-4CED-921A-7E7E2A63021E}|AthletePlatformAPI\\AthletePlatformAPI.csproj|solutionrelative:athleteplatformapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6CC6EE50-FCA3-4CED-921A-7E7E2A63021E}|AthletePlatformAPI\\AthletePlatformAPI.csproj|c:\\github\\swimomatic\\athleteplatform\\athleteplatformapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6CC6EE50-FCA3-4CED-921A-7E7E2A63021E}|AthletePlatformAPI\\AthletePlatformAPI.csproj|solutionrelative:athleteplatformapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91BE4494-DCF5-4805-9B4D-A9A33794CB61}|SwimDomain\\SwimDomain.csproj|c:\\github\\swimomatic\\athleteplatform\\swimdomain\\repositories\\heatsheetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91BE4494-DCF5-4805-9B4D-A9A33794CB61}|SwimDomain\\SwimDomain.csproj|solutionrelative:swimdomain\\repositories\\heatsheetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5BF9EFE0-A3B8-4D5D-8A32-DEE1980823D8}|Platform.Infrastructure\\Platform.Infrastructure.csproj|c:\\github\\swimomatic\\athleteplatform\\platform.infrastructure\\repositories\\athleterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5BF9EFE0-A3B8-4D5D-8A32-DEE1980823D8}|Platform.Infrastructure\\Platform.Infrastructure.csproj|solutionrelative:platform.infrastructure\\repositories\\athleterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A068E4B8-64BC-4CA2-9147-FF9ED73F5051}|Platform.Core\\Platform.Core.csproj|c:\\github\\swimomatic\\athleteplatform\\platform.core\\repositories\\iathleterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A068E4B8-64BC-4CA2-9147-FF9ED73F5051}|Platform.Core\\Platform.Core.csproj|solutionrelative:platform.core\\repositories\\iathleterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 333,
+          "SelectedChildIndex": 11,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\GitHub\\Swimomatic\\AthletePlatform\\AthletePlatformAPI\\Program.cs",
+              "RelativeDocumentMoniker": "AthletePlatformAPI\\Program.cs",
+              "ToolTip": "C:\\GitHub\\Swimomatic\\AthletePlatform\\AthletePlatformAPI\\Program.cs",
+              "RelativeToolTip": "AthletePlatformAPI\\Program.cs",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-24T13:40:10.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\GitHub\\Swimomatic\\AthletePlatform\\AthletePlatformAPI\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "AthletePlatformAPI\\appsettings.Development.json",
+              "ToolTip": "C:\\GitHub\\Swimomatic\\AthletePlatform\\AthletePlatformAPI\\appsettings.Development.json",
+              "RelativeToolTip": "AthletePlatformAPI\\appsettings.Development.json",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAwAkAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-24T13:22:17.606Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HeatSheetRepository.cs",
+              "DocumentMoniker": "C:\\GitHub\\Swimomatic\\AthletePlatform\\SwimDomain\\Repositories\\HeatSheetRepository.cs",
+              "RelativeDocumentMoniker": "SwimDomain\\Repositories\\HeatSheetRepository.cs",
+              "ToolTip": "C:\\GitHub\\Swimomatic\\AthletePlatform\\SwimDomain\\Repositories\\HeatSheetRepository.cs",
+              "RelativeToolTip": "SwimDomain\\Repositories\\HeatSheetRepository.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-24T13:00:48.582Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AthleteRepository.cs",
+              "DocumentMoniker": "C:\\GitHub\\Swimomatic\\AthletePlatform\\Platform.Infrastructure\\Repositories\\AthleteRepository.cs",
+              "RelativeDocumentMoniker": "Platform.Infrastructure\\Repositories\\AthleteRepository.cs",
+              "ToolTip": "C:\\GitHub\\Swimomatic\\AthletePlatform\\Platform.Infrastructure\\Repositories\\AthleteRepository.cs",
+              "RelativeToolTip": "Platform.Infrastructure\\Repositories\\AthleteRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-24T12:57:50.938Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IAthleteRepository.cs",
+              "DocumentMoniker": "C:\\GitHub\\Swimomatic\\AthletePlatform\\Platform.Core\\Repositories\\IAthleteRepository.cs",
+              "RelativeDocumentMoniker": "Platform.Core\\Repositories\\IAthleteRepository.cs",
+              "ToolTip": "C:\\GitHub\\Swimomatic\\AthletePlatform\\Platform.Core\\Repositories\\IAthleteRepository.cs",
+              "RelativeToolTip": "Platform.Core\\Repositories\\IAthleteRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-24T12:57:21.192Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
